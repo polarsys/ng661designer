@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="ng661designer" version="10.1.0.201507271600">
+  <ownedViewpoints name="NG661Designer" modelFileExtension="part2">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="InterfacePropertiesDefinition" label="Interface Properties Definition" initialisation="true" domainClass="part2.InterfaceType">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <metamodel href="../../ng661designer.dsl.part2/model/scxml.ecore#/"/>
+      <ownedLineMappings name="IPD_Properties" domainClass="part2.PropertyType" semanticCandidatesExpression="feature:property"/>
+      <ownedCreateLine name="IPD_CreateProperty" label="Create Property" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='InterfacePropertiesDefinition']/@ownedLineMappings[name='IPD_Properties']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element.createNameElement('org.example.ng661.part2.PropertyType')/]"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="IPD_Name" headerLabelExpression="Name" featureName="name"/>
+      <ownedColumnMappings name="IPD_Type" headerLabelExpression="Type" featureName="type"/>
+      <ownedColumnMappings name="IPD_Modality" headerLabelExpression="Modality" featureName="modality"/>
+      <ownedColumnMappings name="IPD_Value" headerLabelExpression="Value" featureName="value"/>
+      <ownedColumnMappings name="IPD_MaxStringLength" headerLabelExpression="Max String Length" featureName="maxStringLength"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="InterfaceEventDefinition" label="Interface Event Definition" initialisation="true" domainClass="part2.InterfaceType">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <metamodel href="../../ng661designer.dsl.part2/model/scxml.ecore#/"/>
+      <ownedLineMappings name="IED_Event" domainClass="part2.EventType" semanticCandidatesExpression="feature:event"/>
+      <ownedCreateLine name="IED_CreateEvent" label="Create Event" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='InterfaceEventDefinition']/@ownedLineMappings[name='IED_Event']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element.createNameElement('org.example.ng661.part2.EventType')/]"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="IED_Name" headerLabelExpression="Name" featureName="name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="RepresentationDefinition" label="Representation Definition" initialisation="true" domainClass="part2.RepresentationType" enablePopupBars="true">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <metamodel href="../../ng661designer.dsl.part2/model/scxml.ecore#/"/>
+      <metamodel href="http://www.example.org/NG661Part2#/"/>
+      <layout xsi:type="description_2:CompositeLayout"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="RD_Edge" deletionDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@toolSections.6/@ownedTools[name='RD_DeleteLink']" sourceMapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']" targetMapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']" targetFinderExpression="feature:eContents">
+          <style strokeColor="//@userColorsPalettes[name=null]/@entries[name='GreenFG']" sizeComputationExpression="2" routingStyle="manhattan">
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="RD_Node" preconditionExpression="[oclIsKindOf(part2::RepresentationType) or oclIsKindOf(part2::RepresentationTypes)/]" labelDirectEdit="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@toolSections.6/@ownedTools[name='RD_DirectEdit']" semanticCandidatesExpression="feature:eAllContents" semanticElements="service:getRepresentationAssociatedElements" domainClass="EObject">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" borderColor="//@userColorsPalettes[name=null]/@entries[name='GreenBorder']" showIcon="false" labelExpression="service:getRepresentationLabel" labelColor="//@userColorsPalettes[name=null]/@entries[name='GreenLabel']" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name=null]/@entries[name='GreenBG']" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='GreenFG']">
+            <labelFormat>bold</labelFormat>
+          </style>
+        </containerMappings>
+        <toolSections name="Graphic primitive">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateGroupPrimitive" label="Group Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.GroupPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateChildrenPrimitive" label="Children Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.ChildPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateRectanglePrimitive" label="Rectangle Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.RectPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateCirclePrimitive" label="Circle Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.CirclePrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateEllipsePrimitive" label="Ellipse Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.EllipsePrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateLinePrimitive" label="Line Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.LinePrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreatePolylinePrimitive" label="Polyline Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PolylinePrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreatePolygonPrimitive" label="Polygon Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PolygonPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreatePathPrimitive" label="Path Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PathPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateImagePrimitive" label="Image Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.ImagePrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateTextPrimitive" label="Text Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.TextPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Graphic Basic Component">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateArcComponent" label="Arc Component" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.ArcComponent')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateCrownComponent" label="Crown Component" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.CrownComponent')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreatePolarLineComponent" label="Polar Line Component" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PolarLineComponent')/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Interaction Primitive">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_PointerAreaPrimitive" label="Pointer Area Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PointerAreaPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateTouchAreaPrimitive" label="Touch Area Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.PointerAreaPrimitive.touch')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_GestureAreaPrimitive" label="Gesture Area Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.GestureAreaPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateScrollWheelAreaPrimitive" label="Scroll Wheel Area Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.ScrollWheelAreaPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateKeyboardInputPrimitive" label="Keyboard Input Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.KeyboardInputPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Clip Path">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="RD_CreateClipPathPrimitive" label="Clip Path Primitive" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@containerMappings[name='RD_Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createRepresentation('org.example.ng661.part2.ClipPathPrimitive')/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Link">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RD_CreateLink" label="Link" precondition="[preSource.oclAsType(EObject).canContainTargetRepresentation(preTarget.oclAsType(EObject))/]" edgeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']/@defaultLayer/@edgeMappings[name='RD_Edge']" iconPath="/ng661designer.design/icons/Link.gif" connectionStartPrecondition="service:preSource.canContainRepresentation()">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.oclAsType(EObject).createContainmentLink(target.oclAsType(EObject))/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Composition">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="RD_CreationComposition" label="Import Representation" candidatesExpression="service:getAllComponentDefinitions" multiple="true" message="Choose the representations to reuse." iconPath="/ng661designer.design/icons/importRepresentation.png">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.importRepresentation(element)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="RD_ImportProperty" label="Import Property" precondition="[container.oclIsKindOf(part2::WidgetComposition)/]" iconPath="/ng661designer.design/icons/importProperty.png" message="Import properties" candidatesExpression="service:container.getProperties" preSelectedCandidatesExpression="[container.oclAsType(part2::WidgetComposition).values.property/]">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.importProperty(element)"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Edition">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="RD_DeleteLink">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(DSemanticDecorator).target.oclAsType(EObject).createContainmentLink(elementView.oclAsType(DEdge).targetNode.oclAsType(DDiagramElement).target.oclAsType(EObject))/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RD_DirectEdit">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[setRepresentation(arg0)/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="BehaviorDefinition" label="Behavior Definition" initialisation="true" domainClass="part2.BehaviorType">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <metamodel href="../../ng661designer.dsl.part2/model/scxml.ecore#/"/>
+      <subItemMappings name="BD_SCXML" detailDescriptions="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']/@ownedRepresentationCreationDescriptions[name='BD_CreateStateMachine']" navigationDescriptions="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']/@ownedRepresentationNavigationDescriptions[name='BD_NavigateStateMachine']" domainClass="scxml.ScxmlScxmlType" semanticCandidatesExpression="feature:scxml">
+        <defaultStyle labelExpression="feature:id">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <subItemMappings name="BD_Function" domainClass="part2.FunctionType" semanticCandidatesExpression="feature:function">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="BD_Param" domainClass="part2.ParamType" semanticCandidatesExpression="feature:param">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <create name="BD_CreateParam" label="Create Param" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']/@subItemMappings[name='BD_Function']/@subItemMappings[name='BD_Param']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element.createNameElement('org.example.ng661.part2.ParamType')/]"/>
+          <variables name="root" documentation="The semantic element of the tree."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        </create>
+        <popupMenus name="RD_MenuOpenEditor" label="Open Editor">
+          <menuItemDescriptions xsi:type="tool:OperationAction" name="RD_OpenEditor" label="Open Script">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:setScript"/>
+            </initialOperation>
+          </menuItemDescriptions>
+        </popupMenus>
+      </subItemMappings>
+      <createTreeItem name="BD_CreateSCXML" label="Create SCXML" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']/@subItemMappings[name='BD_SCXML']">
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element.createNameElement('org.w3._2005._07.scxml.ScxmlScxmlType')/]"/>
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+      <createTreeItem name="BD_CreateFunction" label="Create Function" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']/@subItemMappings[name='BD_Function']">
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element.createNameElement('org.example.ng661.part2.FunctionType')/]"/>
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+      <ownedRepresentationCreationDescriptions xsi:type="tool_1:DiagramCreationDescription" name="BD_CreateStateMachine" label="State Machine Definition" diagramDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']">
+        <initialOperation/>
+        <containerViewVariable name="containerView"/>
+        <representationNameVariable name="diagramName"/>
+      </ownedRepresentationCreationDescriptions>
+      <ownedRepresentationNavigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" name="BD_NavigateStateMachine" label="State Machine Definition" diagramDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']">
+        <containerViewVariable name="containerView"/>
+        <containerVariable name="container"/>
+        <representationNameVariable name="diagramName"/>
+      </ownedRepresentationNavigationDescriptions>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="StateMachineDefinition" label="State Machine Definition" initialisation="true" domainClass="scxml.ScxmlScxmlType" enablePopupBars="true">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <metamodel href="../../ng661designer.dsl.part2/model/scxml.ecore#/"/>
+      <layout xsi:type="description_2:CompositeLayout"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="SMD_InitialState" preconditionExpression="service:isInitialState" semanticCandidatesExpression="feature:state" domainClass="scxml.ScxmlStateType" reusedBorderedNodeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnEntry'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnExit']">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="feature:id" sizeComputationExpression="5" workspacePath="/ng661designer.design/icons/EtatInitial.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="SMD_Transition" labelDirectEdit="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@toolSections.2/@ownedTools[name='SMD_DirectEditTransition']" doubleClickDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@toolSections.2/@ownedTools[name='SMD_DoubleClick_Edition']" sourceMapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@nodeMappings[name='SMD_InitialState']" targetMapping="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@nodeMappings[name='SMD_InitialState']" targetFinderExpression="[getTransitionTarget(eContainer(scxml::ScxmlScxmlType))/]" sourceFinderExpression="feature:eContainer" domainClass="scxml.ScxmlTransitionType" useDomainElement="true">
+          <style strokeColor="//@userColorsPalettes[name=null]/@entries[name='BlueFG']" sizeComputationExpression="2">
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:getTransitionLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="SMD_State" preconditionExpression="service:isNotInitialState" labelDirectEdit="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@toolSections.2/@ownedTools[name='SMD_DirectEditID']" semanticCandidatesExpression="feature:state" domainClass="scxml.ScxmlStateType" reusedNodeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@nodeMappings[name='SMD_InitialState']" reusedContainerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']">
+          <borderedNodeMappings name="SMD_OnEntry" semanticCandidatesExpression="feature:onentry" semanticElements="service:getAssociatedElement" doubleClickDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@toolSections.2/@ownedTools[name='SMD_DoubleClick_Edition']" domainClass="scxml.ScxmlOnexecuteType">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:getOnentryLabel" sizeComputationExpression="2" workspacePath="/ng661designer.design/icons/ScxmlOnentryType.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="SMD_OnExit" semanticCandidatesExpression="feature:onexit" semanticElements="service:getAssociatedElement" doubleClickDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@toolSections.2/@ownedTools[name='SMD_DoubleClick_Edition']" domainClass="scxml.ScxmlOnexecuteType">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:getOnexitLabel" sizeComputationExpression="2" workspacePath="/ng661designer.design/icons/ScxmlOnexitType.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" borderColor="//@userColorsPalettes[name=null]/@entries[name='BlueBorder']" showIcon="false" labelExpression="feature:id" labelColor="//@userColorsPalettes[name=null]/@entries[name='BlueLabel']" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name=null]/@entries[name='BlueBG']" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='BlueFG']">
+            <labelFormat>bold</labelFormat>
+          </style>
+        </containerMappings>
+        <toolSections name="State">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="SMD_Create_State" label="State" containerMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createIDElement('org.w3._2005._07.scxml.ScxmlStateType')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SMD_Create_OnEntry" label="On Entry" nodeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnEntry']" iconPath="/ng661designer.design/icons/ScxmlOnentryType.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createElement('org.w3._2005._07.scxml.ScxmlOnexecuteType', 'onentry')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SMD_Create_OnExit" label="On Exit" nodeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnExit']" iconPath="/ng661designer.design/icons/ScxmlOnexitType.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createElement('org.w3._2005._07.scxml.ScxmlOnexecuteType', 'onexit')/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Transition">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="SMD_Create_Transition" label="Transition" edgeMappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@edgeMappings[name='SMD_Transition']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.oclAsType(scxml::ScxmlStateType).createTransition(target.oclAsType(scxml::ScxmlStateType))/]"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Edition">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SMD_DoubleClick_Edition" mappings="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@edgeMappings[name='SMD_Transition'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnEntry'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='StateMachineDefinition']/@defaultLayer/@containerMappings[name='SMD_State']/@borderedNodeMappings[name='SMD_OnExit']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open EEF Wizard Action" id="org.eclipse.sirius.eef.actions.openPropertiesWizard"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="SMD_DirectEditTransition" inputLabelExpression="service:getTransitionInputLabelExpression">
+            <mask mask="{0}[{1}]"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="var:arg0">
+                <subModelOperations xsi:type="tool:SetValue" featureName="cond" valueExpression="var:arg1"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="SMD_DirectEditID">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer(scxml::ScxmlScxmlType).eAllContents(scxml::ScxmlTransitionType)->select(t : scxml::ScxmlTransitionType | t.target = self.id)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:arg0"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:SetValue" featureName="id" valueExpression="var:arg0"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="SMD_MenuOpenEditor" label="Open Editor">
+            <menuItemDescription xsi:type="tool:OperationAction" name="RD_OpenEditor" label="Open Script" precondition="[oclIsKindOf(scxml::ScxmlTransitionType) or oclIsKindOf(scxml::ScxmlScxmlType) or oclIsKindOf(scxml::ScxmlOnexecuteType)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:setScript"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="ComponentDiagram" label="Component Diagram" initialisation="true" showOnStartup="true" domainClass="part2.ComponentDefinitionType" enablePopupBars="true">
+      <metamodel href="../../ng661designer.dsl.part2/model/part2.ecore#/"/>
+      <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
+      <defaultLayer name="Default">
+        <containerMappings name="CD_Interface" navigationDescriptions="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_Navigation_Interface_Properties'] //@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_Navigation_Interface_Event']" deletionDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_NO-DEL']" semanticCandidatesExpression="feature:interface" domainClass="part2.InterfaceType">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Interface">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CD_Representation" navigationDescriptions="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_Navigatation_Interface']" deletionDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_NO-DEL']" semanticCandidatesExpression="feature:representation" domainClass="part2.RepresentationType">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name=null]/@entries[name='GreenBorder']" labelExpression="Representation" labelColor="//@userColorsPalettes[name=null]/@entries[name='GreenLabel']" backgroundColor="//@userColorsPalettes[name=null]/@entries[name='GreenBG']" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='GreenFG']"/>
+        </containerMappings>
+        <containerMappings name="CD_Behavior" navigationDescriptions="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_Navigation_Behavior']" deletionDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='ComponentDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_NO-DEL']" semanticCandidatesExpression="feature:behavior" domainClass="part2.BehaviorType">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name=null]/@entries[name='BlueBorder']" labelExpression="Behavior" backgroundColor="//@userColorsPalettes[name=null]/@entries[name='BlueBG']" foregroundColor="//@userColorsPalettes[name=null]/@entries[name='BlueFG']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="CD_Navigatation_Interface" diagramDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='RepresentationDefinition']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="description_1:TableNavigationDescription" name="CD_Navigation_Interface_Properties" tableDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='InterfacePropertiesDefinition']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="tableName"/>
+          </ownedTools>
+          <ownedTools xsi:type="description_1:TableNavigationDescription" name="CD_Navigation_Interface_Event" tableDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='InterfaceEventDefinition']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="tableName"/>
+          </ownedTools>
+          <ownedTools xsi:type="description_3:TreeNavigationDescription" name="CD_Navigation_Behavior" treeDescription="//@ownedViewpoints[name='NG661Designer']/@ownedRepresentations[name='BehaviorDefinition']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="treeName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="CD_NO-DEL">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="ng661designer.design.services.NG661DesignerServices"/>
+    <ownedJavaExtensions qualifiedClassName="ng661designer.design.services.EcoreServices"/>
+    <ownedJavaExtensions qualifiedClassName="ng661designer.design.services.NG661DesignerModelUtils"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes>
+    <entries xsi:type="description:UserFixedColor" red="118" green="147" blue="182" name="BlueBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="255" name="BlueLabel"/>
+    <entries xsi:type="description:UserFixedColor" red="167" green="188" blue="214" name="BlueBG"/>
+    <entries xsi:type="description:UserFixedColor" red="215" green="226" blue="239" name="BlueFG"/>
+    <entries xsi:type="description:UserFixedColor" green="184" name="GreenBorder"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="64" blue="0" name="GreenLabel"/>
+    <entries xsi:type="description:UserFixedColor" red="171" green="211" blue="171" name="GreenFG"/>
+    <entries xsi:type="description:UserFixedColor" red="213" green="233" blue="213" name="GreenBG"/>
+  </userColorsPalettes>
+</description:Group>
