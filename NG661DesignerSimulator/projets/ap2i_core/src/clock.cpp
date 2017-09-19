@@ -1,0 +1,32 @@
+/*******************************************************************************
+* Copyright (c) 2015, 2016 Thales.
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+* Contributors:
+*    Thales Avionics - initial design and implementation
+*******************************************************************************/
+
+#include "clock.h"
+
+namespace AP2I
+{
+
+const char *Clock::CLASS_NAME = "Clock";
+
+Clock::Clock(BasicObject *pParent)
+    : BasicObject(pParent)
+{
+    setClassName(CLASS_NAME);
+    mMilliseconds = 0;
+    mTime.start();
+}
+
+bool Clock::updateIn()
+{
+    mMilliseconds = mTime.elapsed();
+    return true;
+}
+
+} /* namespace AP2I */
