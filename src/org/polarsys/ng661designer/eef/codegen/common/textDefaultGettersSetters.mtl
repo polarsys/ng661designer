@@ -1,0 +1,40 @@
+[comment encoding = UTF-8 /]
+[comment 
+/*******************************************************************************
+ * Copyright (c) 2015, 2016 Airbus.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
+/]
+
+[module textDefaultGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::impl::text::textGettersSetters]
+
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
+[import org::eclipse::emf::eef::codegen::services::imports/]
+
+[template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('Text'))]
+[elementEditor.setterSignature()/] {
+		[elementEditor.defaultValuePart()/]
+		if (newValue != null) {
+			[elementEditor.elementEditorName()/].setText(newValue);
+		} else {
+			[elementEditor.elementEditorName()/].setText(""); //$NON-NLS-1$
+		}
+		[elementEditor.readOnly()/]
+	}
+[/template]
+
+[template private defaultValuePart(elementEditor : ElementEditor) post (trim())]
+boolean eefElementEditorDefaultValueState = isDefault([elementEditor.editorID()/], newValue);
+if (eefElementEditorDefaultValueState) {
+	[elementEditor.elementEditorName()/].setFont([include('org.eclipse.jface.resource.JFaceResources')/].getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT));
+} else {
+	[elementEditor.elementEditorName()/].setFont(JFaceResources.getFontRegistry().defaultFont());
+}	
+[/template]

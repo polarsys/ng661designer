@@ -1,0 +1,1743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="part2" nsURI="http://www.example.org/NG661Part2" nsPrefix="tns">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Open points:&#xA;&#x9;1. base component definition (with default 'id' attribute)&#xA;&#x9;2. how this base definition works from an interface, representation and behavior point of view&#xA;&#xA;&#x9;&#x9;&#x9;This Schema defines the build-in types for ARINC 661 Part 2&#xA;&#x9;&#x9;&#xA;This schema defines the Interface sub-section of A661 Part 2 language.&#xA;This schema defines the Representation sub-section of A661 Part 2 language.&#xA;This schema defines the Behavior sub-section of A661 Part 2 language."/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EDataType" name="AlignementType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify alignments. The allowed values are :&#xA;&#x9;&#x9;&#x9;&#x9;Top Left&#xA;&#x9;&#x9;&#x9;&#x9;Top Center&#xA;&#x9;&#x9;&#x9;&#x9;Top Right&#xA;&#x9;&#x9;&#x9;&#x9;Left&#xA;&#x9;&#x9;&#x9;&#x9;Center&#xA;&#x9;&#x9;&#x9;&#x9;Right&#xA;&#x9;&#x9;&#x9;&#x9;Bottom Left&#xA;&#x9;&#x9;&#x9;&#x9;Bottom Right&#xA;&#x9;&#x9;&#x9;&#x9;Bottom Center&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AlignementType"/>
+      <details key="memberTypes" value="AlignementTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AlignementTypeVal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AlignementTypeVal"/>
+    </eAnnotations>
+    <eLiterals name="topLeft"/>
+    <eLiterals name="topCenter" value="1"/>
+    <eLiterals name="topRight" value="2"/>
+    <eLiterals name="centerLeft" value="3"/>
+    <eLiterals name="center" value="4"/>
+    <eLiterals name="centerRight" value="5"/>
+    <eLiterals name="bottomLeft" value="6"/>
+    <eLiterals name="bottomRight" value="7"/>
+    <eLiterals name="bottomCenter" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AlignementTypeValObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AlignementTypeVal:Object"/>
+      <details key="baseType" value="AlignementTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AngleType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify an orientated or non-orientated angular value.&#xA;&#x9;&#x9;&#x9;&#x9;The unit of angles is degrees. The positive direction of rotation is in the&#xA;&#x9;&#x9;&#x9;&#x9;counter-clockwise direction from the X-axis.&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;The operational range for angles is -360.0° to 360.0° inclusive.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AngleType"/>
+      <details key="memberTypes" value="AngleTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AngleTypeVal" instanceClassName="double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AngleTypeVal"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#double"/>
+      <details key="minInclusive" value="-360.0"/>
+      <details key="maxInclusive" value="360.0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AngleTypeValObject" instanceClassName="java.lang.Double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AngleTypeVal:Object"/>
+      <details key="baseType" value="AngleTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcComponent" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angle" eType="#//AngleType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundAngle" eType="#//AngleType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AspectRatioType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;Aspect ratio for image, can be one of the following 'none', 'meet', 'slice'&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AspectRatioType"/>
+      <details key="memberTypes" value="AspectRatioTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AspectRatioTypeVal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AspectRatioTypeVal"/>
+    </eAnnotations>
+    <eLiterals name="none"/>
+    <eLiterals name="meet" value="1"/>
+    <eLiterals name="slice" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="AspectRatioTypeValObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="AspectRatioTypeVal:Object"/>
+      <details key="baseType" value="AspectRatioTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviorType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to instanciate components that have no representation."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="behaviorGroup" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="group"/>
+        <details key="name" value="BehaviorGroup:0"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scxml" upperBound="-1"
+        eType="ecore:EClass scxml.ecore#//ScxmlScxmlType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" upperBound="-1"
+        eType="#//ClockType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
+        eType="#//FunctionType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##local"/>
+        <details key="name" value=":4"/>
+        <details key="processing" value="lax"/>
+        <details key="group" value="#BehaviorGroup:0"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify booleans. The allowed value are&#xA;&#x9;&#x9;&#x9;&#x9;true, false&#xA;&#x9;&#x9;&#x9;&#x9;TRUE, FALSE&#xA;&#x9;&#x9;&#x9;&#x9;True, False&#xA;&#x9;&#x9;&#x9;&#x9;yes, no&#xA;&#x9;&#x9;&#x9;&#x9;Yes, No&#xA;&#x9;&#x9;&#x9;&#x9;YES, NO&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="BooleanType"/>
+      <details key="memberTypes" value="BooleanTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BooleanTypeVal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="BooleanTypeVal"/>
+    </eAnnotations>
+    <eLiterals name="true"/>
+    <eLiterals name="True1" value="1" literal="True"/>
+    <eLiterals name="TRUE2" value="2" literal="TRUE"/>
+    <eLiterals name="false" value="3"/>
+    <eLiterals name="False1" value="4" literal="False"/>
+    <eLiterals name="FALSE2" value="5" literal="FALSE"/>
+    <eLiterals name="yes" value="6"/>
+    <eLiterals name="Yes1" value="7" literal="Yes"/>
+    <eLiterals name="YES2" value="8" literal="YES"/>
+    <eLiterals name="no" value="9"/>
+    <eLiterals name="No1" value="10" literal="No"/>
+    <eLiterals name="NO2" value="11" literal="NO"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanTypeValObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="BooleanTypeVal:Object"/>
+      <details key="baseType" value="BooleanTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChildPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxNumberOfChildren" eType="#//IntegerType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="#//IntegerType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CirclePrimitive" eSuperTypes="#//ClipRepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cx" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cy" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="r" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClipPathPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//ClipRepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClockType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ColorReferenceType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;All reference to a predefined CSS/SVG color&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorReferenceType"/>
+    </eAnnotations>
+    <eLiterals name="aliceblue"/>
+    <eLiterals name="antiquewhite" value="1"/>
+    <eLiterals name="aqua" value="2"/>
+    <eLiterals name="aquamarine" value="3"/>
+    <eLiterals name="azure" value="4"/>
+    <eLiterals name="beige" value="5"/>
+    <eLiterals name="bisque" value="6"/>
+    <eLiterals name="black" value="7"/>
+    <eLiterals name="blanchedalmond" value="8"/>
+    <eLiterals name="blue" value="9"/>
+    <eLiterals name="blueviolet" value="10"/>
+    <eLiterals name="brown" value="11"/>
+    <eLiterals name="burlywood" value="12"/>
+    <eLiterals name="cadetblue" value="13"/>
+    <eLiterals name="chartreuse" value="14"/>
+    <eLiterals name="chocolate" value="15"/>
+    <eLiterals name="coral" value="16"/>
+    <eLiterals name="cornflowerblue" value="17"/>
+    <eLiterals name="cornsilk" value="18"/>
+    <eLiterals name="crimson" value="19"/>
+    <eLiterals name="cyan" value="20"/>
+    <eLiterals name="darkblue" value="21"/>
+    <eLiterals name="darkcyan" value="22"/>
+    <eLiterals name="darkgoldenrod" value="23"/>
+    <eLiterals name="darkgray" value="24"/>
+    <eLiterals name="darkgreen" value="25"/>
+    <eLiterals name="darkgrey" value="26"/>
+    <eLiterals name="darkkhaki" value="27"/>
+    <eLiterals name="darkmagenta" value="28"/>
+    <eLiterals name="darkolivegreen" value="29"/>
+    <eLiterals name="darkorange" value="30"/>
+    <eLiterals name="darkorchid" value="31"/>
+    <eLiterals name="darkred" value="32"/>
+    <eLiterals name="darksalmon" value="33"/>
+    <eLiterals name="darkseagreen" value="34"/>
+    <eLiterals name="darkslateblue" value="35"/>
+    <eLiterals name="darkslategray" value="36"/>
+    <eLiterals name="darkslategrey" value="37"/>
+    <eLiterals name="darkturquoise" value="38"/>
+    <eLiterals name="darkviolet" value="39"/>
+    <eLiterals name="deeppink" value="40"/>
+    <eLiterals name="deepskyblue" value="41"/>
+    <eLiterals name="dimgray" value="42"/>
+    <eLiterals name="dimgrey" value="43"/>
+    <eLiterals name="dodgerblue" value="44"/>
+    <eLiterals name="firebrick" value="45"/>
+    <eLiterals name="floralwhite" value="46"/>
+    <eLiterals name="forestgreen" value="47"/>
+    <eLiterals name="fuchsia" value="48"/>
+    <eLiterals name="gainsboro" value="49"/>
+    <eLiterals name="ghostwhite" value="50"/>
+    <eLiterals name="gold" value="51"/>
+    <eLiterals name="goldenrod" value="52"/>
+    <eLiterals name="gray" value="53"/>
+    <eLiterals name="green" value="54"/>
+    <eLiterals name="greenyellow" value="55"/>
+    <eLiterals name="grey" value="56"/>
+    <eLiterals name="honeydew" value="57"/>
+    <eLiterals name="hotpink" value="58"/>
+    <eLiterals name="indianred" value="59"/>
+    <eLiterals name="indigo" value="60"/>
+    <eLiterals name="ivory" value="61"/>
+    <eLiterals name="khaki" value="62"/>
+    <eLiterals name="lavender" value="63"/>
+    <eLiterals name="lavenderblush" value="64"/>
+    <eLiterals name="lawngreen" value="65"/>
+    <eLiterals name="lemonchiffon" value="66"/>
+    <eLiterals name="lightblue" value="67"/>
+    <eLiterals name="lightcoral" value="68"/>
+    <eLiterals name="lightcyan" value="69"/>
+    <eLiterals name="lightgoldenrodyellow" value="70"/>
+    <eLiterals name="lightgray" value="71"/>
+    <eLiterals name="lightgreen" value="72"/>
+    <eLiterals name="lightgrey" value="73"/>
+    <eLiterals name="lightpink" value="74"/>
+    <eLiterals name="lightsalmon" value="75"/>
+    <eLiterals name="lightseagreen" value="76"/>
+    <eLiterals name="lightskyblue" value="77"/>
+    <eLiterals name="lightslategray" value="78"/>
+    <eLiterals name="lightslategrey" value="79"/>
+    <eLiterals name="lightsteelblue" value="80"/>
+    <eLiterals name="lightyellow" value="81"/>
+    <eLiterals name="lime" value="82"/>
+    <eLiterals name="limegreen" value="83"/>
+    <eLiterals name="linen" value="84"/>
+    <eLiterals name="magenta" value="85"/>
+    <eLiterals name="maroon" value="86"/>
+    <eLiterals name="mediumaquamarine" value="87"/>
+    <eLiterals name="mediumblue" value="88"/>
+    <eLiterals name="mediumorchid" value="89"/>
+    <eLiterals name="mediumpurple" value="90"/>
+    <eLiterals name="mediumseagreen" value="91"/>
+    <eLiterals name="mediumslateblue" value="92"/>
+    <eLiterals name="mediumspringgreen" value="93"/>
+    <eLiterals name="mediumturquoise" value="94"/>
+    <eLiterals name="mediumvioletred" value="95"/>
+    <eLiterals name="midnightblue" value="96"/>
+    <eLiterals name="mintcream" value="97"/>
+    <eLiterals name="mistyrose" value="98"/>
+    <eLiterals name="moccasin" value="99"/>
+    <eLiterals name="navajowhite" value="100"/>
+    <eLiterals name="navy" value="101"/>
+    <eLiterals name="oldlace" value="102"/>
+    <eLiterals name="olive" value="103"/>
+    <eLiterals name="olivedrab" value="104"/>
+    <eLiterals name="orange" value="105"/>
+    <eLiterals name="orangered" value="106"/>
+    <eLiterals name="orchid" value="107"/>
+    <eLiterals name="palegoldenrod" value="108"/>
+    <eLiterals name="palegreen" value="109"/>
+    <eLiterals name="paleturquoise" value="110"/>
+    <eLiterals name="palevioletred" value="111"/>
+    <eLiterals name="papayawhip" value="112"/>
+    <eLiterals name="peachpuff" value="113"/>
+    <eLiterals name="peru" value="114"/>
+    <eLiterals name="pink" value="115"/>
+    <eLiterals name="plum" value="116"/>
+    <eLiterals name="powderblue" value="117"/>
+    <eLiterals name="purple" value="118"/>
+    <eLiterals name="red" value="119"/>
+    <eLiterals name="rosybrown" value="120"/>
+    <eLiterals name="royalblue" value="121"/>
+    <eLiterals name="saddlebrown" value="122"/>
+    <eLiterals name="salmon" value="123"/>
+    <eLiterals name="sandybrown" value="124"/>
+    <eLiterals name="seagreen" value="125"/>
+    <eLiterals name="seashell" value="126"/>
+    <eLiterals name="sienna" value="127"/>
+    <eLiterals name="silver" value="128"/>
+    <eLiterals name="skyblue" value="129"/>
+    <eLiterals name="slateblue" value="130"/>
+    <eLiterals name="slategray" value="131"/>
+    <eLiterals name="slategrey" value="132"/>
+    <eLiterals name="snow" value="133"/>
+    <eLiterals name="springgreen" value="134"/>
+    <eLiterals name="steelblue" value="135"/>
+    <eLiterals name="tan" value="136"/>
+    <eLiterals name="teal" value="137"/>
+    <eLiterals name="thistle" value="138"/>
+    <eLiterals name="tomato" value="139"/>
+    <eLiterals name="turquoise" value="140"/>
+    <eLiterals name="violet" value="141"/>
+    <eLiterals name="wheat" value="142"/>
+    <eLiterals name="white" value="143"/>
+    <eLiterals name="whitesmoke" value="144"/>
+    <eLiterals name="yellow" value="145"/>
+    <eLiterals name="yellowgreen" value="146"/>
+    <eLiterals name="none" value="147"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorReferenceTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorReferenceType:Object"/>
+      <details key="baseType" value="ColorReferenceType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorRGBHEXType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorRGB_HEX_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="#[0-9a-fA-F][0-9a-fA-F][0-9a-fA-F]([0-9a-fA-F][0-9a-fA-F][0-9a-fA-F])?"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorRGBRgb255Type" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorRGB_rgb255_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="rgb\(\s*([0-9]?[0-9]|[01]?[0-9][0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([0-9]?[0-9]|[01]?[0-9][0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([0-9]?[0-9]|[01]?[0-9][0-9]|2[0-4][0-9]|25[0-5])\s*\)"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorRGBRgbPercentType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorRGB_rgbPercent_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="rgb\(\s*([0-9]?[0-9]|0?[0-9][0-9]|100)\s*%25\s*,\s*([0-9]?[0-9]|0?[0-9][0-9]|100)\s*%25\s*,\s*([0-9]?[0-9]|0?[0-9][0-9]|100)\s*%25\s*\)"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorRGBType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The union of all ways to specify a RGB value.&#xA;&#x9;&#x9;&#x9;&#x9;Hexadecimal #RGB of #RRGGBB&#xA;&#x9;&#x9;&#x9;&#x9;0-255 Decimal : rgb( red , green , blue)&#xA;&#x9;&#x9;&#x9;&#x9;0-100 Percentage : rgb( red% , green% , blue%)&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorRGBType"/>
+      <details key="memberTypes" value="ColorRGB_rgbPercent_Type ColorRGB_rgb255_Type ColorRGB_HEX_Type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ColorType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a color value. It uses the sRGB color space.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to SVG 1.1 color property.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ColorType"/>
+      <details key="memberTypes" value="ColorRGBType ColorReferenceType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentDefinitionType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="import" upperBound="-1"
+        eType="#//ImportType" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Import"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//InterfaceType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Interface"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representation" eType="#//RepresentationType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Representation"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behavior" eType="#//BehaviorType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Behavior"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CrownComponent" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="innerRadius" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outerRadius" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomIntegerTypeElementType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":0"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="#//IntegerType"
+        defaultValueLiteral="9223372036854775807" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="#//IntegerType"
+        defaultValueLiteral="-9223372036854775808" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolution" eType="#//IntegerType"
+        defaultValueLiteral="1" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//StringType"
+        defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":6"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomRealTypeElementType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":0"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="#//RealType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="#//RealType"
+        defaultValueLiteral="0.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolution" eType="#//RealType"
+        defaultValueLiteral="0.001" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//StringType"
+        defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":6"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomStringTypeElementType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":0"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" eType="#//IntegerType"
+        defaultValueLiteral="256" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" eType="#//IntegerType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regex" eType="#//StringType"
+        defaultValueLiteral=".*" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="##other"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DateTimeType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a date and a time in the form YYYY-MM-DDThh:mm:ss where YYYY indicates the year, MM the month and DD the day, T is a marker that&#xA;&#x9;&#x9;&#x9;&#x9;indicates the start of the time section, hh indicates the hour, mm the minute and ss the second.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to xs:dateTime type.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DateTimeType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#dateTime Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DateType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a date in the form YYYY-MM-DD where YYYY indicates the year, MM the month and DD the day.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to xs:date type.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DateType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#date Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DistanceType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;TBD&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DistanceType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#double Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentRoot">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value=""/>
+      <details key="kind" value="mixed"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mixed" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":mixed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xMLNSPrefixMap" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xmlns:prefix"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xSISchemaLocation" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        transient="true" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="xsi:schemaLocation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentDefinition" upperBound="-2"
+        eType="#//ComponentDefinitionType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EllipsePrimitive" eSuperTypes="#//ClipRepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cx" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cy" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ry" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Expression" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Expression"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="\{.*\}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FillRuleType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The rule to determine the interior of the shape. It can be one of the two following SVG rules : &#xA;&#x9;&#x9;&#x9;&#x9;'nonzero' or 'evenodd'&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FillRuleType"/>
+      <details key="memberTypes" value="FillRuleTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FillRuleTypeVal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FillRuleTypeVal"/>
+    </eAnnotations>
+    <eLiterals name="nonzero"/>
+    <eLiterals name="evenodd" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FillRuleTypeValObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FillRuleTypeVal:Object"/>
+      <details key="baseType" value="FillRuleTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a Uniform Resource Identifier to a font resource.&#xA;&#x9;&#x9;&#x9;&#x9;For more information on supported file format see section §TBD&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FontType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#anyURI Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FormatStringType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a format string used to convert numeric values into strings.&#xA;&#x9;&#x9;&#x9;&#x9;The formatstring is the based on the FormatString defined ARINC-661&#xA;&#x9;&#x9;&#x9;&#x9;Part1 section §3.3.10.1.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FormatStringType"/>
+      <details key="memberTypes" value="FormatStringTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FormatStringTypeVal" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FormatStringTypeVal"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="[^_\.\+#⏨]*\+?[^\.\+#⏨]*[^_\.\+⏨]*\.?[^_\.\+⏨]*[^\.\+#⏨]*(⏨\+?[_]*[#]+)?[^_\.\+#⏨]*"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FrequencyType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a frequency. The unit of frequencies is hertz.&#xA;&#x9;&#x9;&#x9;&#x9;The operational range for frequency is 0.0 to 1000.0 Hz inclusive.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FrequencyType"/>
+      <details key="memberTypes" value="FrequencyTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FrequencyTypeVal" instanceClassName="double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FrequencyTypeVal"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#double"/>
+      <details key="minInclusive" value="0.0"/>
+      <details key="maxInclusive" value="1000.0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FrequencyTypeValObject" instanceClassName="java.lang.Double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="FrequencyTypeVal:Object"/>
+      <details key="baseType" value="FrequencyTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
+        eType="#//ParamType" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Param"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="script" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Script"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GestureAreaPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptedGesture" eType="#//StringType"
+        defaultValueLiteral="all" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="#//BooleanType"
+        defaultValueLiteral="true" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImagePrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignment" eType="#//AlignementType"
+        defaultValueLiteral="topLeft" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aspectRatio" eType="#//AspectRatioType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="#//ImageType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ImageType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a Uniform Resource Identifier to an image resource.&#xA;&#x9;&#x9;&#x9;&#x9;For more information on supported file format see section §TBD&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImageType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#anyURI Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImportType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="IntegerType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a general purpose signed integer.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to xs:long type (64-bit signed integer).&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="IntegerType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#long Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
+        eType="#//PropertyType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
+        eType="#//EventType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KeyboardInputPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="#//BooleanType"
+        defaultValueLiteral="true" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinePrimitive" eSuperTypes="#//ClipRepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x1" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x2" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y1" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y2" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModalityType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="modality_._type"/>
+    </eAnnotations>
+    <eLiterals name="In"/>
+    <eLiterals name="Out" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModalityType1">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="modality_._1_._type"/>
+    </eAnnotations>
+    <eLiterals name="InOut"/>
+    <eLiterals name="Out" value="1"/>
+    <eLiterals name="In" value="2"/>
+    <eLiterals name="Local" value="3"/>
+    <eLiterals name="ConstOut" value="4"/>
+    <eLiterals name="ConstIn" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ModalityTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="modality_._type:Object"/>
+      <details key="baseType" value="modality_._type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ModalityTypeObject1" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="modality_._1_._type:Object"/>
+      <details key="baseType" value="modality_._1_._type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NameType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify an identifier of a component or primitive.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="NameType"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="maxLength" value="128"/>
+      <details key="minLength" value="1"/>
+      <details key="pattern" value="[_a-zA-Z][_0-9a-zA-Z]*"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OpacityType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify opacity as a real value within the range 0.0 to 1.0, where 0.0 is fully transparent and 1.0 is fully opaque.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent&#xA;&#x9;&#x9;&#x9;&#x9;to SVG 1.1 &lt;opacity-value> "/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="OpacityType"/>
+      <details key="memberTypes" value="OpacityTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OpacityTypeVal" instanceClassName="double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="OpacityTypeVal"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#double"/>
+      <details key="minInclusive" value="0.0"/>
+      <details key="maxInclusive" value="1.0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OpacityTypeValObject" instanceClassName="java.lang.Double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="OpacityTypeVal:Object"/>
+      <details key="baseType" value="OpacityTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modality" lowerBound="1"
+        eType="#//ModalityType" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PathPrimitive" eSuperTypes="#//ClipRepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="d" lowerBound="1" eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PointerAreaPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptedButtons" eType="#//StringType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="#//BooleanType"
+        defaultValueLiteral="true" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passThrough" eType="#//BooleanType"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preventStealing" eType="#//BooleanType"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PolarLineComponent" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angle" eType="#//AngleType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="r" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x1" eType="#//PositionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y1" eType="#//PositionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PolygonPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="points" lowerBound="1"
+        eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PolylinePrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="points" lowerBound="1"
+        eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="PositionType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;TBD&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="PositionType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#double Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxStringLength" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Integer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Used for strings"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modality" lowerBound="1"
+        eType="#//ModalityType1" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//TypeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="RealType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a general purpose real.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to xs:double type (64-bit IEEE floating point type).&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="RealType"/>
+      <details key="memberTypes" value="http://www.eclipse.org/emf/2003/XMLType#double Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RectPrimitive" eSuperTypes="#//ClipRepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ry" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepresentationType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="TO DO"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group1" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clipPath" upperBound="-1"
+        eType="#//ClipPathPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositions" upperBound="-1"
+        eType="#//WidgetComposition" transient="true" unsettable="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScrollWheelAreaPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="#//BooleanType"
+        defaultValueLiteral="true" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="StippleType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;TBD SVG Stipple&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="StippleType"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="StringType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a general purpose string.&#xA;&#x9;&#x9;&#x9;&#x9;This type is equivalent to xs:string type.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="StringType"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextPrimitive" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawingPriority" eType="#//ZIndexType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill" eType="#//ColorType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fillRule" eType="#//FillRuleType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFamily" lowerBound="1"
+        eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="#//StringType"
+        defaultValueLiteral="medium" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontStretch" eType="#//StringType"
+        defaultValueLiteral="normal" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontStyle" eType="#//StringType"
+        defaultValueLiteral="normal" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontVariant" eType="#//StringType"
+        defaultValueLiteral="normal" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontWeight" eType="#//StringType"
+        defaultValueLiteral="normal" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stroke" eType="#//ColorType"
+        defaultValueLiteral="white" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDasharray" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeDashoffset" eType="#//DistanceType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinecap" eType="#//StringType"
+        defaultValueLiteral="butt" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeLinejoin" eType="#//StringType"
+        defaultValueLiteral="miter" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeMiterlimit" eType="#//RealType"
+        defaultValueLiteral="4.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeOpacity" eType="#//OpacityType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokewidth" eType="#//DistanceType"
+        defaultValueLiteral="1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityType"
+        defaultValueLiteral="visible" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TimeDefaultmillisecondsType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Time_defaultmilliseconds_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="[+-]?[0-9]*(\.[0-9]*)?(E[+-]?[0-9]?[0-9])?"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TimeHoursType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Time_hours_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="[+-]?[0-9]*(\.[0-9]*)?(E[+-]?[0-9]?[0-9])?\s*[hH]"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TimeMinutesType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Time_minutes_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="[+-]?[0-9]*(\.[0-9]*)?(E[+-]?[0-9]?[0-9])?\s*[mM][nN]"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TimeSecondsOrSubsecondsType" instanceClassName="java.lang.String">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Time_seconds_or_subseconds_Type"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="pattern" value="[+-]?[0-9]*(\.[0-9]*)?(E[+-]?[0-9]?[0-9])?\s*[mMµ]?[sS]"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TimeType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a time duration. It consists of a real value followed by an optional time unit.&#xA;&#x9;&#x9;&#x9;&#x9;The following units are allowed :&#xA;&#x9;&#x9;&#x9;&#x9;- h, for hours&#xA;&#x9;&#x9;&#x9;&#x9;- mn,&#xA;&#x9;&#x9;&#x9;&#x9;for minutes&#xA;&#x9;&#x9;&#x9;&#x9;- s, for seconds&#xA;&#x9;&#x9;&#x9;&#x9;- ms, for milliseconds&#xA;&#x9;&#x9;&#x9;&#x9;- µs, for microseconds&#xA;&#x9;&#x9;&#x9;&#x9;If not specified, the default unit is milliseconds.&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;The operational range is from 0 second to 1000 years.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="TimeType"/>
+      <details key="memberTypes" value="Time_hours_Type Time_minutes_Type Time_seconds_or_subseconds_Type Time_defaultmilliseconds_Type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TouchAreaPrimitive">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipPath" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipRule" eType="#//StringType"
+        defaultValueLiteral="nonzero" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="#//BooleanType"
+        defaultValueLiteral="true" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//NameType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximumTouchPoints" eType="#//IntegerType"
+        defaultValueLiteral="10" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimumTouchPoints" eType="#//IntegerType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transform" eType="#//StringType"
+        defaultValueLiteral="none" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//DistanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="#//PositionType"
+        defaultValueLiteral="0" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="TypeType" instanceClassName="java.lang.String">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify an identifier of a type.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="TypeType"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#string"/>
+      <details key="maxLength" value="128"/>
+      <details key="minLength" value="1"/>
+      <details key="pattern" value="[_a-zA-Z][_0-9a-zA-Z]*Type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VelocityType" instanceClassName="double">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify a speed such as a finger speed. The unit for velocity is mm/s.&#xA;&#x9;&#x9;&#x9;&#x9;The operational range for velocity is 0.0 to 3E11&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VelocityType"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#double"/>
+      <details key="minInclusive" value="0.0"/>
+      <details key="maxInclusive" value="3E11"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VelocityTypeObject" instanceClassName="java.lang.Double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VelocityType:Object"/>
+      <details key="baseType" value="VelocityType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VisibilityType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The visibility of the item It can be one of the following SVG values : visible, hidden or collapse&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VisibilityType"/>
+      <details key="memberTypes" value="VisibilityTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VisibilityTypeVal">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VisibilityTypeVal"/>
+    </eAnnotations>
+    <eLiterals name="visible"/>
+    <eLiterals name="hidden" value="1"/>
+    <eLiterals name="collapse" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="VisibilityTypeValObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="VisibilityTypeVal:Object"/>
+      <details key="baseType" value="VisibilityTypeVal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ZIndexType" instanceClassName="java.lang.Object">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&#xA;&#x9;&#x9;&#x9;&#x9;The type is used to specify the drawing priority, in sense which component should be drawn on top of another.&#xA;&#x9;&#x9;&#x9;&#x9;The priority is an integer in the operational&#xA;&#x9;&#x9;&#x9;&#x9;range -32768 to 32767 inclusive, where higher priority components are drawn on top of lower priority component.&#xA;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ZIndexType"/>
+      <details key="memberTypes" value="ZIndexTypeVal Expression"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ZIndexTypeVal" instanceClassName="java.math.BigInteger">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ZIndexTypeVal"/>
+      <details key="baseType" value="http://www.eclipse.org/emf/2003/XMLType#integer"/>
+      <details key="minInclusive" value="-32768"/>
+      <details key="maxInclusive" value="32767"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepresentationTypes" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClipRepresentationTypes" abstract="true"
+      eSuperTypes="#//RepresentationTypes"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//PropertyType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WidgetComposition" eSuperTypes="#//RepresentationTypes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representation" eType="#//ComponentDefinitionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="#//PropertyValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childElements" upperBound="-1"
+        eType="#//RepresentationTypes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" upperBound="-1"
+        eType="#//GroupPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ChildPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rectangle" upperBound="-1"
+        eType="#//RectPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="circle" upperBound="-1"
+        eType="#//CirclePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ellipse" upperBound="-1"
+        eType="#//EllipsePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" upperBound="-1" eType="#//LinePrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polyline" upperBound="-1"
+        eType="#//PolylinePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polygon" upperBound="-1"
+        eType="#//PolygonPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//PathPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" upperBound="-1"
+        eType="#//ImagePrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//TextPrimitive"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arc" upperBound="-1" eType="#//ArcComponent"
+        transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crown" upperBound="-1"
+        eType="#//CrownComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="polarLine" upperBound="-1"
+        eType="#//PolarLineComponent" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointerArea" upperBound="-1"
+        eType="#//PointerAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="touchArea" upperBound="-1"
+        eType="#//TouchAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestureArea" upperBound="-1"
+        eType="#//GestureAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scrollWheelArea" upperBound="-1"
+        eType="#//ScrollWheelAreaPrimitive" transient="true" unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyboardInput" upperBound="-1"
+        eType="#//KeyboardInputPrimitive" transient="true" unsettable="true" derived="true"/>
+  </eClassifiers>
+</ecore:EPackage>
