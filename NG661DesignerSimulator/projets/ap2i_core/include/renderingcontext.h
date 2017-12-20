@@ -13,8 +13,6 @@
 
 #include <QSharedPointer>
 #include <QMap>
-#include <QRect>
-#include <QMatrix>
 
 class QPaintDevice;
 class QImage;
@@ -43,15 +41,6 @@ public:
     float currentOpacity() const { return mCurrentOpacity; }
     void setCurrentOpacity(float pNewOpacity) { mCurrentOpacity = pNewOpacity; }
 
-    const QRect &currentClipbox() const { return mCurrentClipbox; }
-    void cumulateClipbox(int pX, int pY, int pWidth, int pHeight);
-
-    const QMatrix &currentMatrix() const { return mCurrentMatrix; }
-    QMatrix &currentMatrix() { return mCurrentMatrix; }
-
-//    QPaintDevice *device() const { return mDevice; }
-//    void setDevice(QPaintDevice *pDevice) { mDevice = pDevice; }
-
     // load the given pImage in the GPU or return the id of the loaded texture
     // if pImage has already been loaded
     uint loadTexture(const QImage &pImage);
@@ -60,10 +49,6 @@ private:
     int mCurrentX;
     int mCurrentY;
     float mCurrentOpacity;
-    QRect mCurrentClipbox;
-    QMatrix mCurrentMatrix;
-//    QPaintDevice *mDevice;
-//    QSharedPointer<TexturesMap> mTextures;
 };
 
 } /* namespace AP2I */

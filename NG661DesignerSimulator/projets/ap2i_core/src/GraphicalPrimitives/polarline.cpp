@@ -28,8 +28,6 @@ bool Polarline::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -40,8 +38,6 @@ bool Polarline::renderOut(RenderingContext &pContext)
     BasicItem::renderOut(pContext);
 
     vgDestroyPath(mPolarlinePath);
-
-    undoTransformCapacities();
 
     return true;
 }

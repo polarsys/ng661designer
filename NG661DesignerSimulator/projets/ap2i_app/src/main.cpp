@@ -29,6 +29,23 @@ static long gCanvasHeight = 768;
 static long gX = 1024;
 static long gY = 768;
 
+static int restart()
+{
+    char *lFileName = 0;
+    int lFonctionsDLLOptions = 0;
+
+    QByteArray ba ;
+    QString lFileStr = QFileDialog::getOpenFileName(0, "Open File", "", "A661 part 2 files (*.part2)");
+    ba =lFileStr.toLatin1();
+    lFileName = ba.data();
+
+    delete(gFunctionDLL);
+
+    gFunctionDLL = new FonctionsDLL(QString::fromLatin1(lFileName),(WId)hdc, lFonctionsDLLOptions);
+
+    return true;
+}
+
 
 LRESULT CALLBACK my_wnd_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -78,8 +95,8 @@ LRESULT CALLBACK my_wnd_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 POINT mpos;
                 GetCursorPos(&mpos);
-                gFunctionDLL->setXPointer((LOWORD(lParam))/* - gX*/);
-                gFunctionDLL->setYPointer((HIWORD(lParam)) + 2 * GetSystemMetrics(SM_CYCAPTION));
+                gFunctionDLL->setXPointer((LOWORD(lParam)));
+                gFunctionDLL->setYPointer((HIWORD(lParam)) + 45);
             }
         break;
         case WM_MOUSEWHEEL :
@@ -120,6 +137,14 @@ LRESULT CALLBACK my_wnd_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_KEYUP:
         if (gFunctionDLL != NULL)
         {
+            if(wParam == VK_F5)
+            {
+                restart();
+            }
+            else
+            {
+                /* nothing to do */
+            }
             gFunctionDLL->setKeyState(wParam, FALSE);
         }
         break;
@@ -129,8 +154,6 @@ LRESULT CALLBACK my_wnd_proc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return 0;
 }
-
-
 
 HDC open_window (long par_ws, long par_hs)
 {
@@ -176,8 +199,6 @@ HDC open_window (long par_ws, long par_hs)
 
     return hdc;
 }
-
-
 
 int main(int argc, char *argv[])
 {

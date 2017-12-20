@@ -28,12 +28,53 @@ void DomParser::parseElement(QDomElement &pElement)
 {
     bool lParseChildren = startElement(pElement);
 
-    QDomElement lCurrent = pElement.firstChildElement();
-    while (lParseChildren && !lCurrent.isNull())
+    QString lElemName = pElement.localName();
+    if (lElemName == "Replicate")
     {
-        parseElement(lCurrent);
-        lCurrent = lCurrent.nextSiblingElement();
+        bool lConvertResult;
+        QString lMaxNbOfItem = pElement.attribute("maxNumberOfInstance");
+        int lMaxNbOfItemInt = lMaxNbOfItem.toInt(&lConvertResult, 10);
+
+        if (!lConvertResult)
+        {
+            if (lMaxNbOfItem.indexOf("Interface.") == -1)
+            {
+                lMaxNbOfItemInt = 0;
+            }
+            else
+            {
+                /* TO DO, chopper les proprietes du component si possible on verra plus tard */
+            }
+        }
+        else
+        {
+            /* Nothing to do*/
+        }
+
+        for (int i = 0; i<lMaxNbOfItemInt; i++)
+        {
+           QString lName = pElement.attribute("id");
+           pElement.setAttribute("id", lName + QString::number(i));
+           startElement(pElement);
+           QDomElement lCurrent = pElement.firstChildElement();
+           while (lParseChildren && !lCurrent.isNull())
+           {               
+               parseElement(lCurrent);            
+               lCurrent = lCurrent.nextSiblingElement();
+           }
+           endElement(pElement);
+           pElement.setAttribute("id", lName);
+        }
     }
+    else
+    {
+    	QDomElement lCurrent = pElement.firstChildElement();
+    	while (lParseChildren && !lCurrent.isNull())
+    	{
+        	parseElement(lCurrent);
+        	lCurrent = lCurrent.nextSiblingElement();
+    	}
+	}
 
     endElement(pElement);
 }

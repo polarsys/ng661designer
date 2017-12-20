@@ -11,6 +11,7 @@
 #ifndef PARSINGUTILS_H
 #define PARSINGUTILS_H
 
+#include <QString>
 class QDomElement;
 
 namespace AP2I
@@ -29,7 +30,11 @@ public:
      */
     static void parseItemProperties(Component &pOwner,
                                     BasicObject &pItem,
-                                    QDomElement &pElement);
+                                    QDomElement &pElement,
+                                    QString pReplicateId,
+                                    QString pReplicateIndexAlias,
+                                    QString pReplicateInstanceAlias,
+                                    QString pReplicateDataModel);
 };
 
 } /* namespace AP2I */

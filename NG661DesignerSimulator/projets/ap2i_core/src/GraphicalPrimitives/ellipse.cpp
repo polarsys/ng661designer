@@ -37,8 +37,6 @@ bool Ellipse::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -50,7 +48,6 @@ bool Ellipse::renderOut(RenderingContext &pContext)
 
     vgDestroyPath(mEllipsePath);
 
-    undoTransformCapacities();
     return true;
 }
 

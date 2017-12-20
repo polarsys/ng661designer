@@ -17,6 +17,9 @@ namespace AP2I
 class Group : public BasicItem
 {
     Q_OBJECT
+
+    Q_PROPERTY(PositionType tx READ tx WRITE setTx)
+    Q_PROPERTY(PositionType ty READ ty WRITE setTy)
     //CORE_PROPERTIES defini dans la class mere BasicObject
     //GRAPHICS_PROPERTIES
 //    TRANSFORM_PROPERTIES
@@ -30,9 +33,19 @@ public:
     virtual void    createPrimitive(RenderingContext &pContext);
     virtual void    drawPrimitive(RenderingContext &pContext);
 
+    void setTx(PositionType pTx) { mTx = pTx; }
+    PositionType tx(){return mTx;}
+    double getTx() {return mTx.getValue();}
+
+    void setTy(PositionType pTy) { mTy = pTy; }
+    PositionType ty() { return mTy; }
+    double getTy() {return mTy.getValue();}
 
     static const char *CLASS_NAME;
 
+private:
+    PositionType mTx;
+    PositionType mTy;
 
 };
 }

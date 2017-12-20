@@ -23,14 +23,14 @@ namespace AP2I
 class ScrollWheelArea : public BasicItem
 {
 	Q_OBJECT
-	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled)
+    Q_PROPERTY(bool enable READ enable WRITE setEnable)
     Q_PROPERTY(bool needFocus READ needFocus WRITE setNeedFocus)
     Q_PROPERTY(bool focused READ focused)
 	Q_PROPERTY(WheelEventStructType* data READ data)
 public:
     explicit ScrollWheelArea(BasicObject *pParent = 0);
-	bool enabled() { return mEnabled.value(); }
-    void setEnabled(bool pEnabled) { mEnabled = BooleanType(pEnabled); }
+    bool enable() { return mEnable.value(); }
+    void setEnable(bool pEnabled) { mEnable = BooleanType(pEnabled); }
     bool needFocus() { return mFocusNeeded.value(); }
     void setNeedFocus(bool pNeedFocus) { mFocusNeeded = BooleanType(pNeedFocus); }
 	bool focused() {return mFocused.value(); }
@@ -39,7 +39,7 @@ public:
 	Q_INVOKABLE bool requestFocus();
     Q_INVOKABLE bool releaseFocus();
 
-    void handleEvent(RuntimeEvent &pEvent);
+    bool handleEvent(RuntimeEvent &pEvent);
 
     const RuntimeEvent *getEvent(const QString &pEventName) const;
 
@@ -64,7 +64,7 @@ private:
     static void raiseFocusOutEvent(ScrollWheelArea &pArea);
     static void raiseWheelScrolledEvent(ScrollWheelArea &pArea);    
 
-	BooleanType mEnabled;
+    BooleanType mEnable;
     BooleanType mFocusNeeded;    
 
     StateMachine mStateMachine;

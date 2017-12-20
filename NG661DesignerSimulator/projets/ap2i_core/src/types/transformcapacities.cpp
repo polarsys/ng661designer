@@ -94,20 +94,6 @@ bool TransformCapacities::isSkewYTransformation(std::string pTransformation){
     return ( found != std::string::npos);
 }
 
-void TransformCapacities::runTransformCapacities( QString pTransformString){
-
-
-    glPushMatrix();
-
-    runTransformCapacities( 1, pTransformString);
-}
-
-void TransformCapacities::undoTransformCapacities( QString pTransformString){
-    runTransformCapacities( -1, pTransformString);
-
-    glPopMatrix();
-}
-
 void TransformCapacities::runTransformCapacities( int pCoeff,  QString pTransformString){
     std::vector<std::string> lOperations = getOperationsFromTransformCapacities( pTransformString);
     int lNbOperations = lOperations.size();

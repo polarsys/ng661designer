@@ -16,11 +16,17 @@
 #include "debug_macros.h"
 #include <QDebug>
 
+extern "C" {
+#include "GL/gl.h"
+}
+
 namespace AP2I {
     const char *Group::CLASS_NAME = "Group";
 
     Group::Group(BasicObject *pParent)
-        : BasicItem(pParent)
+        : BasicItem(pParent),
+          mTx(0.0F),
+          mTy(0.0F)
     {
         setClassName(CLASS_NAME);
     }
@@ -33,9 +39,11 @@ namespace AP2I {
 
         createPrimitive(pContext);
 
-        runTransformCapacities();
-
         drawPrimitive(pContext);
+
+        glPushMatrix();
+
+        glTranslatef(pContext.currentX() + getTx(), pContext.currentY() + getTy(), 0.0F);
 
         return true;
     }
@@ -44,7 +52,7 @@ namespace AP2I {
     {
         BasicItem::renderOut(pContext);
 
-        undoTransformCapacities();
+        glPopMatrix();
 
         return true;
     }
@@ -52,7 +60,6 @@ namespace AP2I {
     void Group::initDefaultFields()
     {
         BasicItem::initDefaultFields();
-
     }
 
     void Group::createPrimitive(RenderingContext &pContext)

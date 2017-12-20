@@ -23,7 +23,7 @@ ExecuteEngine::ExecuteEngine()
 
 bool ExecuteEngine::in(BasicObject *pItem)
 {
-    if (pItem->visible())
+    if (pItem->visibility().getValue().compare("visible") == 0)
     {
         return pItem->updateIn();
     }
@@ -35,7 +35,7 @@ bool ExecuteEngine::in(BasicObject *pItem)
 
 bool ExecuteEngine::out(BasicObject *pItem)
 {
-    if (pItem->visible())
+    if (pItem->visibility().getValue().compare("visible") == 0)
     {
         return pItem->updateOut();
     }

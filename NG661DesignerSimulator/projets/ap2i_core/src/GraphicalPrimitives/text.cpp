@@ -22,7 +22,6 @@ extern "C" {
 #include FT_GLYPH_H
 }
 #include <stdarg.h>
-#include "transformcapacities.h"
 #include <QDebug>
 #include <QString>
 #include "alignementtype.h"
@@ -74,8 +73,7 @@ bool Text::renderIn(RenderingContext &pContext)
 
     BasicItem::renderIn(pContext);
 
-    initDefaultFields();
-    runTransformCapacities();
+    initDefaultFields();    
     drawStringInOpenGL(pContext.currentX()+getX(), pContext.currentY()+getY(), value().getValue().c_str());
 
     return true;
@@ -245,7 +243,7 @@ void Text::drawStringInOpenGL(float x, float y, const char *format)
 
                    int y2 = slot->bitmap.rows - slot->bitmap_top;
 
-                   glColor3f(stroke().redf(), stroke().greenf(), stroke().bluef());
+                   glColor4f(fill().redf(), fill().greenf(), fill().bluef(), fill().alphaf());
 
                    glBegin(GL_QUADS);
                    glTexCoord2i(0, 0); glVertex2i(pen_x, pen_y - y2 + slot->bitmap.rows);
@@ -277,16 +275,8 @@ bool Text::renderOut(RenderingContext &pContext)
     //pContext.setCurrentX(pContext.currentX() - getX());
     //pContext.setCurrentY(pContext.currentY() - getY());
 
-    undoTransformCapacities();
     return true;
 }
 
-
-void Text::runTransformCapacities(){
-    TransformCapacities::runOpenGLTransformCapacities( transform());
-}
-void Text::undoTransformCapacities(){
-    TransformCapacities::undoOpenGLTransformCapacities( transform());
-}
 } /* namespace AP2I */
 

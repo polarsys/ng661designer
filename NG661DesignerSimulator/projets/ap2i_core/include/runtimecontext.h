@@ -14,6 +14,7 @@
 #include "pointer.h"
 #include "keyboard.h"
 #include "scrollwheel.h"
+#include "pointerarea.h"
 #include <QMap>
 #include <QString>
 
@@ -44,12 +45,17 @@ public:
     // if pImageFile has already been loaded, returns the existing QImage
     QImage *loadImage(const QString &pImageFile);
 
+    QList<PointerArea *> *focusedPointerAreas(){return &mFocusedPointerAreas;}
+    QList<PointerArea *> *previousFocusedPointerAreas(){return &mPreviousFocusedPointerAreas;}
+
     static RuntimeContext defaultContext;
 
 private:
     Pointer *mPointer;
     Keyboard *mKeyboard;
-    ScrollWheel *mScrollWheel;
+    ScrollWheel *mScrollWheel;    
+    QList<PointerArea *>mFocusedPointerAreas;
+    QList<PointerArea *>mPreviousFocusedPointerAreas;
     QMap<QString, QImage *> mImages;
 };
 

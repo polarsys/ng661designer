@@ -36,6 +36,7 @@
 #include "velocitytype.h"
 #include "visibilitytype.h"
 #include "zindextype.h"
+#include "arrayentrytype.h"
 
 #include <QVariant>
 
@@ -92,6 +93,8 @@ ParsingContext::ParsingContext(Component &pComponent, ComponentFactory &pFactory
           { "VelocityType", qMetaTypeId<VelocityType>() },
           { "VisibilityType", qMetaTypeId<VisibilityType>() },
           { "ZIndexType", qMetaTypeId<ZIndexType>() },
+          { "EntryType", qMetaTypeId<EntryType>() },
+          { "ArrayEntryType", qMetaTypeId<ArrayEntryType>() },
 
           { "FillRuleType", QVariant::String },
 

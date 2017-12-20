@@ -12,7 +12,6 @@
 
 #include "renderingcontext.h"
 #include "runtimecontext.h"
-#include "transformcapacities.h"
 
 #include <iostream>
 #include <QPaintDevice>
@@ -28,13 +27,7 @@ namespace AP2I
 const char *BasicItem::CLASS_NAME = "BasicItem";
 
 BasicItem::BasicItem(BasicObject *pParent)
-    : BasicObject(pParent)/*,
-      mX(0),
-      mY(0),
-      mWidth(0),
-      mHeight(0),
-      mOpacity(1.0),
-      mClipped(false)*/
+    : BasicObject(pParent)
 {
     setClassName(CLASS_NAME);
     PAINTFILL_INITIALIZERS;
@@ -153,11 +146,6 @@ bool BasicItem::renderIn(RenderingContext &)
 
 bool BasicItem::renderOut(RenderingContext &)
 {
-    if (mClipped)
-    {
-        glDisable(GL_SCISSOR_TEST);
-        glPopAttrib();
-    }
     vgDestroyPaint(myStrokePaint);
     vgDestroyPaint(myFillPaint);
 
@@ -171,14 +159,6 @@ void BasicItem::createPrimitive(RenderingContext &){
 }
 
 void BasicItem::drawPrimitive(RenderingContext &){
-}
-
-void BasicItem::runTransformCapacities(){
-    TransformCapacities::runTransformCapacities( transform());
-}
-
-void BasicItem::undoTransformCapacities(){
-    TransformCapacities::undoTransformCapacities( transform());
 }
 
 } /* namespace AP2I */

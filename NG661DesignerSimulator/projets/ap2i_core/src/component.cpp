@@ -44,6 +44,8 @@
 #include "velocitytype.h"
 #include "visibilitytype.h"
 #include "zindextype.h"
+#include "arrayentrytype.h"
+#include "entrytype.h"
 
 namespace AP2I
 {
@@ -192,9 +194,20 @@ Component::Component(BasicObject *pParent)
                             ZIndexType::toScriptValue,
                             ZIndexType::fromScriptValue);
 
+    //register EntryType type to script engine
+    qScriptRegisterMetaType(mScriptEngine,
+                            EntryType::toScriptValue,
+                            EntryType::fromScriptValue);
+
+    //register ArrayEntryType type to script engine
+    qScriptRegisterMetaType(mScriptEngine,
+                            ArrayEntryType::toScriptValue,
+                            ArrayEntryType::fromScriptValue);
+
     //register ColorType getColorValues helper
     mScriptEngine->globalObject().setProperty("getColorValues",
                 mScriptEngine->newFunction(ColorType::getColorValues));
+
 
     // register Component to scriptEngine so that the properties of the interface
     // are accessible
@@ -239,10 +252,39 @@ void Component::addBinding(const QString &pDestComponent,
 void Component::registerRepresentationElement(BasicObject *pItem)
 {
     // Register pItem to the scriptEngine so its properties can be accessed
-    // through scripts using "Representation.<obj_id>.<prop_name>"
-    QScriptValue lElementValue = mScriptEngine->newQObject(pItem);
-    mScriptEngine->globalObject().setProperty("Representation_" + pItem->id(),
+    // through scripts using "Tree.<obj_id>.<prop_name>"
+    QScriptValue lElementValue = mScriptEngine->newQObject(pItem);    
+    mScriptEngine->globalObject().setProperty("Tree_" + pItem->id(),
                                              lElementValue);
+}
+
+void Component::registerReplicateRepresentationElement(BasicObject *pItem, int pMaxItem)
+{
+    // Création d'un tableau dans le moteur de script pour pouvoir accéder aux diverses entrées du replicate
+    QScriptValue lElementArray = mScriptEngine->newArray(pMaxItem);
+    QScriptValue lElementValue = mScriptEngine->newQObject(pItem);
+
+    mScriptEngine->globalObject().setProperty("Tree_" + pItem->id(), lElementArray);
+    mScriptEngine->globalObject().setProperty("Tree__" + pItem->id(), lElementValue);
+}
+
+void Component::registerReplicateEntryRepresentationElement(BasicObject *pItem, Replicate *pReplicate, int pNb)
+{
+    //Ajout des replicateEntry comme éléments du tableau créé pour la classe Replicate
+    QString lArrayName = "Tree_" + pReplicate->id();
+    QScriptValue lElementValue = mScriptEngine->newQObject(pItem);
+    QScriptValue lArray = mScriptEngine->globalObject().property(lArrayName);
+    lArray.setProperty(pNb, lElementValue);
+
+    mScriptEngine->globalObject().setProperty(lArrayName, lArray);
+    mScriptEngine->globalObject().setProperty("Tree_" + pItem->id(), lElementValue);
+}
+
+void Component::registerReplicateChildRepresentationElement(BasicObject *pItem, ReplicateEntry *pReplicateEntry, QString pNb)
+{
+    //Ajout des éléments enfants d'un replicateEntry comme propriété de celui là et on directement dans le moteur de script
+    //de manière à pouvoir les appeler dans le script par Tree_nomdureplicate[index].NomDuChild
+    pReplicateEntry->setProperty(pItem->id().toLatin1(), QVariant::fromValue(pItem));
 }
 
 void Component::registerBehaviorElement(BasicObject *pItem)
@@ -304,7 +346,7 @@ const RuntimeEvent *Component::getEvent(const QString &pEventName) const
     return lEvent;
 }
 
-void Component::handleEvent(RuntimeEvent &pEvent)
+bool Component::handleEvent(RuntimeEvent &pEvent)
 {
     //add event data to script env
     if (pEvent.beginParam() != pEvent.endParam())
@@ -315,6 +357,7 @@ void Component::handleEvent(RuntimeEvent &pEvent)
         }
     }
     mStateMachine->enqueueEvent(pEvent);
+    return true;
 }
 
 void Component::raiseEvent(RuntimeEvent &pEvent)
@@ -338,7 +381,6 @@ bool Component::updateIn()
             qDebug() << "ERROR: Script exception for component "
                      + id() + "(" + className() + ") :" << lRes.toString()
                      << "in binding : " << lBinding->script() << "\n";
-
         }
         else if (lRes.isUndefined())
         {
@@ -532,6 +574,12 @@ bool Component::event(QEvent *pEvent)
                 ZIndexType lZIndex = lOldVal.value<ZIndexType>();
                 lZIndex.setValue(lNewVal.toString());
                 lNewVal = QVariant::fromValue(lZIndex);
+            }
+            else if(lOldVal.userType() == qMetaTypeId<ArrayEntryType>())
+            {
+                ArrayEntryType lArrayEntryType = lOldVal.value<ArrayEntryType>();
+                /* TO DO */
+                lNewVal = QVariant::fromValue(lArrayEntryType);
             }
             else
             {

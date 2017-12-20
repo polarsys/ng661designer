@@ -26,7 +26,7 @@ Binding::Binding(const QString &pDestComponent,
     lExpression.replace("}", "", Qt::CaseSensitive);
 
     mScript = pDestComponent + "." + pDestProperty + " = " + lExpression + ";";
-    mScript.replace("Representation.", "Representation_", Qt::CaseSensitive);
+    mScript.replace("Tree.", "Tree_", Qt::CaseSensitive);
     mScript.replace("Behavior.", "Behavior_", Qt::CaseSensitive);
     mProgram = QScriptProgram(mScript);
 }

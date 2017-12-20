@@ -37,8 +37,6 @@ bool Circle::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -50,7 +48,6 @@ bool Circle::renderOut(RenderingContext &pContext)
 
     vgDestroyPath(mCirclePath);
 
-    undoTransformCapacities();
     return true;
 }
 

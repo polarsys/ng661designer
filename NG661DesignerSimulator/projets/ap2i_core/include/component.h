@@ -17,6 +17,7 @@
 #include "basicobject.h"
 #include "eventcomponent.h"
 #include "basicitem.h"
+#include "replicateentry.h"
 
 class QScriptEngine;
 
@@ -40,15 +41,18 @@ public:
                     const QString &pExpression);
 
     void registerRepresentationElement(BasicObject *pItem);
+    void registerReplicateRepresentationElement(BasicObject *pItem, int pMaxItem);
+    void registerReplicateEntryRepresentationElement(BasicObject *pItem, Replicate *pReplicate, int pNb);
+    void registerReplicateChildRepresentationElement(BasicObject *pItem, ReplicateEntry *pReplicateEntry, QString pNb);
     void registerBehaviorElement(BasicObject *pItem);
 
     StateMachine *createStateMachine();
 
-    void addProperty(const QString &pName, QVariant pVal);
+    void addProperty(const QString &pName, QVariant pVal);    
 
     RuntimeEvent *addEvent(const QString &pEventName);
     const RuntimeEvent *getEvent(const QString &pEventName) const;
-    virtual void handleEvent(RuntimeEvent &pEvent);
+    virtual bool handleEvent(RuntimeEvent &pEvent);
     void raiseEvent(RuntimeEvent &pEvent);
 
     virtual bool updateIn();
@@ -62,7 +66,7 @@ private:
     bool mInitialized;
     QList<Binding *> mBindings;
     QList<RuntimeEvent *> mEvents;
-    QHash<QString, QVariant> mProperties;
+    QHash<QString, QVariant> mProperties;    
     QScriptEngine *mScriptEngine;
     StateMachine *mStateMachine;
     EventComponent *mEventComponent;

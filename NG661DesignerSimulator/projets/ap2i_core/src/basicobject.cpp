@@ -57,12 +57,12 @@ BasicObject::BasicObject(BasicObject *pParent)
       mDefaultContent(this),
       mOwner(0),
       mOriginComponent(0),
-      mContext(RuntimeContext::defaultContext)
+      mContext(RuntimeContext::defaultContext),
+      GRAPHICS_INITIALIZERS
 {
 
     setClassName(CLASS_NAME);
     setId("unknown");
-    mVisible = true;
 
     if (pParent)
     {
@@ -97,14 +97,24 @@ void BasicObject::setContext(RuntimeContext &pContext)
 void BasicObject::addEventsListener(BasicObject *pListener)
 {
     if (pListener && !mEventsListeners.contains(pListener))
-        mEventsListeners.append(pListener);
+        mEventsListeners.prepend(pListener);
 }
 
 void BasicObject::notifyListeners(RuntimeEvent &pEvent)
 {
+    bool lReturn;
     for (BasicObject *lObj : mEventsListeners)
     {
-        lObj->handleEvent(pEvent);
+        lReturn = lObj->handleEvent(pEvent);
+        if(lReturn == false)
+        {
+			/* One object is opaque */
+            break;
+        }
+        else
+        {
+            /* NOTHING TO DO */
+        }
     }
 }
 
@@ -116,7 +126,7 @@ BasicObject::SetPropertyResult BasicObject::setPropertyValue(const QString &pPro
     if (lPropVal.isValid())
     {
         if (pPropValue.indexOf("Interface.")      == -1
-         && pPropValue.indexOf("Representation.") == -1
+         && pPropValue.indexOf("Tree.") == -1
          && pPropValue.indexOf("Behavior.")       == -1)
         {
             uint lType = lPropVal.type();

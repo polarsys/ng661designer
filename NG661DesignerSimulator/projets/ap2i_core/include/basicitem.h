@@ -24,7 +24,6 @@ class BasicItem : public BasicObject
     Q_OBJECT
     PAINTFILL_PROPERTIES
     PAINTSTROKE_PROPERTIES
-    GRAPHICS_PROPERTIES
     CLIP_PROPERTIES
     FILTER_PROPERTIES
     TRANSFORM_PROPERTIES
@@ -33,8 +32,7 @@ class BasicItem : public BasicObject
     Q_PROPERTY(PositionType y READ y WRITE setY)
     Q_PROPERTY(DistanceType width READ width WRITE setWidth)
     Q_PROPERTY(DistanceType height READ height WRITE setHeight)
-    Q_PROPERTY(float opacity READ opacity WRITE setOpacity)
-    Q_PROPERTY(bool clipped READ clipped WRITE setClipped)
+    Q_PROPERTY(float opacity READ opacity WRITE setOpacity)    
 
 public:
     explicit BasicItem(BasicObject *pParent = 0);
@@ -68,10 +66,7 @@ public:
     double getHeight() {return mHeight.getValue();}
 
     virtual float opacity() const { return mOpacity; }
-    virtual void setOpacity(float pOpacity) { mOpacity = pOpacity; }
-
-    virtual bool clipped() const { return mClipped; }
-    virtual void setClipped(bool pClipped) { mClipped = pClipped; }
+    virtual void setOpacity(float pOpacity) { mOpacity = pOpacity; }    
 
     static const char *CLASS_NAME;
 
@@ -80,13 +75,9 @@ protected :
     void    createPrimitive(RenderingContext &pContext);
     void    drawPrimitive(RenderingContext &pContext);
 
-    void runTransformCapacities();
-    void undoTransformCapacities();
-
 private:
     PAINTFILL_FIELDS
     PAINTSTROKE_FIELDS
-    GRAPHICS_FIELDS
     CLIP_FIELDS
     FILTER_FIELDS
     TRANSFORM_FIELDS
@@ -98,8 +89,7 @@ private:
     PositionType mY;
     DistanceType mWidth;
     DistanceType mHeight;
-    float mOpacity;
-    bool mClipped;
+    float mOpacity;    
 
     VGImage mImage;
 };

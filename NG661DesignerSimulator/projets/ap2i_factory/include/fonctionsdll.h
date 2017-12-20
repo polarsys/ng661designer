@@ -12,6 +12,7 @@
 #define FONCTIONSDLL_H
 
 #include <QString>
+#include <QWindow>
 #include "renderingengine.h"
 #include "executeengine.h"
 #include "pointer.h"

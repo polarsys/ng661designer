@@ -13,6 +13,7 @@
 #include "importparser.h"
 #include "parsingcontext.h"
 #include "propertyparser.h"
+#include "arraypropertyparser.h"
 #include "eventparser.h"
 #include "representationparser.h"
 #include "statemachineparser.h"
@@ -89,6 +90,7 @@ Component *ComponentFactory::instantiateComponent(BasicObject *pParent,
     ParsingContext lContext(*lReturnValue, *this);
     ImportParser lImportParser(lContext);
     PropertyParser lPropertyParser(lContext);
+    ArrayPropertyParser lArrayPropertyParser(lContext);
     EventParser lEventParser(lContext);
     RepresentationParser lRpzParser(lContext);
     BehaviorParser lBehaviorParser(lContext);
@@ -96,12 +98,13 @@ Component *ComponentFactory::instantiateComponent(BasicObject *pParent,
     FunctionParser lFunctionParser(lContext);
     EnumParser lEnumParser(lContext);
 
-    lDigester.addRule(DigestRule("/ComponentDefinition/Import", &lImportParser));
-    lDigester.addRule(DigestRule("/ComponentDefinition/Representation", &lRpzParser));
+    lDigester.addRule(DigestRule("/ComponentDefinition/Definition/Import", &lImportParser));
+    lDigester.addRule(DigestRule("/ComponentDefinition/Tree", &lRpzParser));
     lDigester.addRule(DigestRule("/ComponentDefinition/Interface/Property", &lPropertyParser));
+    lDigester.addRule(DigestRule("/ComponentDefinition/Interface/ArrayProperty", &lArrayPropertyParser));
     lDigester.addRule(DigestRule("/ComponentDefinition/Interface/Event", &lEventParser));
     lDigester.addRule(DigestRule("/ComponentDefinition/Interface/Event/Param", &lEventParser));
-    lDigester.addRule(DigestRule("/ComponentDefinition/Behavior", &lBehaviorParser));
+    lDigester.addRule(DigestRule("/ComponentDefinition/Behavior", &lBehaviorParser));    
     lDigester.addRule(DigestRule("/ComponentDefinition/Behavior/scxml", &lHSMParser));
     /* Patch Scxml */
     lDigester.addRule(DigestRule("/ComponentDefinition/Behavior/Scxml", &lHSMParser));

@@ -18,6 +18,7 @@
 #include "OpacityType.h"
 #include "StringType.h"
 #include "IntegerType.h"
+#include "visibilitytype.h"
 #include "paintstrokecapacities.h"
 
 #define CORE_PROPERTIES \
@@ -39,7 +40,7 @@
     Q_PROPERTY(OpacityType strokeOpacity READ strokeOpacity WRITE setStrokeOpacity)
 
 #define GRAPHICS_PROPERTIES \
-    Q_PROPERTY(QString visibility READ visibility WRITE setVisibility) \
+    Q_PROPERTY(VisibilityType visible READ visibility WRITE setVisibility) \
     Q_PROPERTY(int drawingPriority READ drawingPriority WRITE setDrawingPriority)
 
 #define CLIP_PROPERTIES \
@@ -84,13 +85,8 @@
     void setStrokeOpacity(OpacityType pStrokeOpacity){mStrokeOpacity = pStrokeOpacity;}
 
 #define GRAPHICS_METHODS \
-    QString visibility(){return mVisibility;} \
-    void setVisibility(QString pVisibility){mVisibility = pVisibility; \
-            if(pVisibility.compare("visible", Qt::CaseInsensitive) == 0){setVisible(true);} \
-            else if(pVisibility.compare("hidden", Qt::CaseInsensitive) == 0){setVisible(false);} \
-            else if(pVisibility.compare("collapse", Qt::CaseInsensitive) == 0){setVisible(false);} \
-            else if(pVisibility.compare("inherit", Qt::CaseInsensitive) == 0){if(getParent() != NULL){setVisible(getParent()->visible());}} \
-            else {setVisible(false);}} \
+    VisibilityType visibility(){return mVisibility;} \
+    void setVisibility(VisibilityType pVisibility){mVisibility=pVisibility;} \
     int drawingPriority(){return mDrawingPriority;} \
     void setDrawingPriority(int pDrawingPriority){mDrawingPriority = pDrawingPriority;}
 
@@ -126,7 +122,7 @@
     OpacityType mStrokeOpacity;
 
 #define GRAPHICS_FIELDS \
-    QString mVisibility; \
+    VisibilityType mVisibility; \
     int mDrawingPriority;
 
 #define CLIP_FIELDS \

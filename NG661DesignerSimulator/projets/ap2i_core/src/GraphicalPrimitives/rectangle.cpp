@@ -39,8 +39,6 @@ bool Rectangle::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -49,8 +47,6 @@ bool Rectangle::renderIn(RenderingContext &pContext)
 bool Rectangle::renderOut(RenderingContext &pContext)
 {
     BasicItem::renderOut(pContext);
-
-    undoTransformCapacities();
 
     vgDestroyPath(mRectRound);
 

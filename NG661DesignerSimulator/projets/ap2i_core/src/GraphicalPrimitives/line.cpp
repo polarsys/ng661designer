@@ -35,9 +35,8 @@ bool Line::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
+
     return true;
 }
 
@@ -47,7 +46,6 @@ bool Line::renderOut(RenderingContext &pContext)
 
     vgDestroyPath(mLinePath);
 
-    undoTransformCapacities();
     return true;
 }
 

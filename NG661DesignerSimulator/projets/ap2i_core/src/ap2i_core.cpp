@@ -37,6 +37,8 @@
 #include "visibilitytype.h"
 #include "zindextype.h"
 #include "keyeventstructtype.h"
+#include "arrayentrytype.h"
+#include "entrytype.h"
 
 #include <QDebug>
 #include <string>
@@ -73,6 +75,8 @@ void initializeCoreTypes()
     qRegisterMetaType<AP2I::VelocityType>("VelocityType");
     qRegisterMetaType<AP2I::VisibilityType>("VisibilityType");
     qRegisterMetaType<AP2I::ZIndexType>("ZIndexType");
+    qRegisterMetaType<AP2I::ArrayEntryType>("ArrayEntryType");
+    qRegisterMetaType<AP2I::EntryType>("EntryType");
 
     //uses implicit conversion through constructor : "DistanceType(const double &pValue);"
     QMetaType::registerConverter<double,AP2I::AngleType>();
@@ -99,7 +103,7 @@ void initializeCoreTypes()
     QMetaType::registerConverter<int,AP2I::VelocityType>();
     QMetaType::registerConverter<long,AP2I::VelocityType>();
     QMetaType::registerConverter<int,AP2I::ZIndexType>();
-    QMetaType::registerConverter<long,AP2I::ZIndexType>();
+    QMetaType::registerConverter<long,AP2I::ZIndexType>();    
 
     QMetaType::registerConverter<AP2I::EnumType, QString>(&AP2I::EnumType::value);
     QMetaType::registerComparators<AP2I::EnumType>();

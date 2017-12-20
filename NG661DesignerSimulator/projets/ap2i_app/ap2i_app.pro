@@ -53,8 +53,6 @@ LIBS += -L$$BIN_SUBDIRS_PATH/ap2i_xml/$$BUILD_DIR
 LIBS += -L$$BIN_SUBDIRS_PATH/ap2i_hsm/$$BUILD_DIR
 LIBS += -L$$BIN_SUBDIRS_PATH/ap2i_factory/$$BUILD_DIR
 LIBS += -lap2i_factory -lap2i_core -lap2i_xml -lap2i_hsm
-LIBS += -L"Z:\Qt\Qt5.3.2\Tools\mingw482_32\lib\gcc\i686-w64-mingw32\lib"
-LIBS += -L"Z:/Qt/Qt5.3.2/Tools/mingw482_32/lib/gcc/i686-w64-mingw32/4.8.2"
 
 #force re-link on lib modification
 PRE_TARGETDEPS += $$BIN_SUBDIRS_PATH/ap2i_xml/$$BUILD_DIR/libap2i_xml.a
@@ -87,9 +85,10 @@ INCLUDEPATH += $$GNUWIN32_PATH"\include"
 DEPENDPATH += $$GNUWIN32_PATH"\lib"
 DEPENDPATH += $$GNUWIN32_PATH"\bin"
 PRE_TARGETDEPS += $$GNUWIN32_PATH"\lib\jpeg.lib"
+PRE_TARGETDEPS += $$GNUWIN32_PATH"\lib\libpng.lib"
 LIBS += -L$$GNUWIN32_PATH"\bin"
 
-LIBS += -lopengl32 -lgdi32 -ljpeg62
+LIBS += -lopengl32 -lgdi32 -ljpeg62 -lpng12
 
 SOURCES += \
     src/main.cpp

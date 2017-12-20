@@ -16,9 +16,15 @@
 #include "runtimecontext.h"
 #include "renderingcontext.h"
 #include "transformitem.h"
+#include "transformrotate.h"
+#include "transformtranslate.h"
+#include "transformscale.h"
+#include "transformskew.h"
+#include "group.h"
 
 #include <QStack>
 #include <QDebug>
+#include <QMatrix>
 
 namespace AP2I
 {
@@ -52,8 +58,26 @@ public:
     }
 };
 
-bool PointerArea::isEnabled(PointerArea &pArea)  { return pArea.enabled();  }
-bool PointerArea::isDisabled(PointerArea &pArea) { return !pArea.enabled(); }
+bool PointerArea::isEnable(PointerArea &pArea)  {
+    if (pArea.enable() && pArea.visibility().getValue() == "visible")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool PointerArea::isDisabled(PointerArea &pArea) {
+    if (!(pArea.enable() && pArea.visibility().getValue() == "visible"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 bool PointerArea::isFocused(PointerArea &pArea)  { return pArea.mFocused;   }
 bool PointerArea::isUnfocused(PointerArea &pArea){ return !pArea.mFocused;  }
 bool PointerArea::isPreventStealing(PointerArea &pArea){ return pArea.preventStealing();  }
@@ -64,12 +88,19 @@ void PointerArea::raiseEnterEvent(PointerArea &pArea)
     pArea.mEnterEvent.setParamValue("y", QVariant::fromValue(pArea.mPointerPositionY));
     pArea.notifyListeners(pArea.mEnterEvent);
 }
+
 void PointerArea::raiseLeaveEvent(PointerArea &pArea)
 {
     pArea.mLeaveEvent.setParamValue("x", QVariant::fromValue(pArea.mPointerPositionX));
     pArea.mLeaveEvent.setParamValue("y", QVariant::fromValue(pArea.mPointerPositionY));
     pArea.notifyListeners(pArea.mLeaveEvent);
 }
+
+void PointerArea::forceLeave()
+{
+    this->mFocused = false;
+}
+
 void PointerArea::raiseMoveEvent(PointerArea &pArea)
 {
     pArea.mMoveEvent.setParamValue("x", pArea.mPointerPositionX.getValue());
@@ -91,7 +122,7 @@ void PointerArea::raiseReleaseEvent(PointerArea &pArea)
 
 PointerArea::PointerArea(BasicObject *pParent)
     : BasicItem(pParent),
-      mEnabled(true),
+      mEnable(true),
       mEnterEvent  ("EnterEvent", this),
       mLeaveEvent  ("LeaveEvent", this),
       mMoveEvent   ("MoveEvent", this),
@@ -125,7 +156,7 @@ PointerArea::PointerArea(BasicObject *pParent)
                               lDisabled,
                               lEnabled,
                               NULL,
-                              new PointerAreaCondition(*this, isEnabled));
+                              new PointerAreaCondition(*this, isEnable));
     lDisabled->addTransition(lEnable);
 
     State *lEIdle    = new State("E_IDLE"   , lEnabled);
@@ -212,9 +243,22 @@ PointerArea::PointerArea(BasicObject *pParent)
     mStateMachine.start();
 }
 
-void PointerArea::handleEvent(RuntimeEvent &pEvent)
+bool PointerArea::handleEvent(RuntimeEvent &pEvent)
 {
-    mStateMachine.enqueueEvent(pEvent);
+    bool lPassThrought;
+    computeFocus();
+    if((mFocused == true))
+    {
+        /* Taking focus focused */
+        mStateMachine.enqueueEvent(pEvent);
+        context().focusedPointerAreas()->append(this);
+        lPassThrought = mPassThrough.value();
+    }
+    else
+    {
+        lPassThrought = true;
+    }
+    return lPassThrought;
 }
 
 const RuntimeEvent *PointerArea::getEvent(const QString &pEventName) const
@@ -229,15 +273,21 @@ const RuntimeEvent *PointerArea::getEvent(const QString &pEventName) const
 
 bool PointerArea::updateIn()
 {
-    QPoint lPointerPos(context().pointer()->x(),
-                       context().pointer()->y());
-
     mPointerPositionX.setValue(context().pointer()->x());
     mPointerPositionY.setValue(context().pointer()->y());
 
+    mStateMachine.executeIteration();
+    return true;
+}
+
+void PointerArea::computeFocus()
+{
+    QPoint lPointerPos(context().pointer()->x(),
+                       context().pointer()->y());
     QMatrix lMatrix;
     QObject *lCur = this;
     QStack<QObject *>lAncestors;
+    QObjectList lChildren;
 
     while(lCur)
     {
@@ -251,15 +301,53 @@ bool PointerArea::updateIn()
         BasicItem *lItem = dynamic_cast<BasicItem *>(lCur);
         if (lItem)
         {
+            Group *lGrp = dynamic_cast<Group *>(lItem);
+            if (lGrp)
+            {
+                lMatrix.translate(lGrp->getTx(), lGrp->getTy());
+            }
+
+
             TransformItem *lTi = dynamic_cast<TransformItem *>(lItem);
             if (lTi)
             {
-                int lX, lY;
-                lTi->getOrigin(lX, lY);
-                lMatrix.translate(lTi->x().getValue() + lX, lTi->y().getValue() + lY);
-                lMatrix.scale(lTi->scaleX(), lTi->scaleY());
-                lMatrix.rotate(lTi->angle());
-                lMatrix.translate(-lX, -lY);
+                lChildren = lTi->children();
+
+                for (int i = 0; i<lChildren.size(); i++)
+                {
+                    TransformRotate *lTr = dynamic_cast<TransformRotate *>(lChildren[i]);
+                    if (lTr)
+                    {
+                        lMatrix.translate(lTr->getCx(), lTr->getCy());
+                        lMatrix.rotate(lTr->getAngle());
+                        lMatrix.translate(-lTr->getCx(), -lTr->getCy());
+                    }
+
+                    TransformTranslate *lTt = dynamic_cast<TransformTranslate *>(lChildren[i]);
+                    if (lTt)
+                    {
+                        lMatrix.translate(lTt->getTx(), lTt->getTy());
+                    }
+
+                    TransformScale *lTs = dynamic_cast<TransformScale *>(lChildren[i]);
+                    if (lTs)
+                    {
+                        lMatrix.translate(lTs->getSx(), lTs->getSy());
+                    }
+
+                    TransformSkew *lTsk = dynamic_cast<TransformSkew *>(lChildren[i]);
+                    if (lTsk)
+                    {
+                        if(lTsk->getSkewType() == SKEWX)
+                        {
+                            lMatrix.shear(0,tan(lTsk->getAngle()));
+                        }
+                        else
+                        {
+                            lMatrix.shear(tan(lTsk->getAngle()),0);
+                        }
+                    }
+                }
             }
         }
     }
@@ -272,12 +360,9 @@ bool PointerArea::updateIn()
         mFocused = lBox.containsPoint(lPointerPos, Qt::OddEvenFill);
     }
     else
-    {
+    {        
         mFocused = QRect(lMatrix.dx(), lMatrix.dy(), width().getValue(), height().getValue()).contains(lPointerPos);
     }
-
-    mStateMachine.executeIteration();
-    return true;
 }
 
 } /* namespace AP2I */

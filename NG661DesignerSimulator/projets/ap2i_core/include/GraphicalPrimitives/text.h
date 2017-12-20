@@ -17,6 +17,8 @@
 #include "stringtype.h"
 #include "integertype.h"
 #include "alignementtype.h"
+#include "opacityType.h"
+#include "colortype.h"
 extern "C" {
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -32,6 +34,10 @@ class Text : public BasicItem
     Q_PROPERTY(DistanceType fontSize READ fontSize WRITE setFontSize)
     Q_PROPERTY(StringType value READ value WRITE setValue)
     Q_PROPERTY(AlignementType alignment READ alignment WRITE setAlignment)
+    Q_PROPERTY(ColorType backgroundColor READ backgroundColor WRITE setBackgroundColor)
+    Q_PROPERTY(OpacityType backgroundOpacity READ backgroundOpacity WRITE setBackgroundOpacity)
+    Q_PROPERTY(StringType flowDirection READ flowDirection WRITE setFlowDirection)
+    Q_PROPERTY(StringType textFlow READ textFlow WRITE setTextFlow)
 
 public:
     explicit Text(BasicObject *pParent = 0);
@@ -39,9 +45,7 @@ public:
     virtual ~Text() {}
 
     virtual bool renderIn(RenderingContext &pContext);
-    virtual bool renderOut(RenderingContext &pContext);
-    virtual void runTransformCapacities();
-    virtual void undoTransformCapacities();
+    virtual bool renderOut(RenderingContext &pContext);    
     virtual void initDefaultFields();
 
 
@@ -61,6 +65,22 @@ public:
     AlignementType alignment(){return mAlignment;}
     std::string getAlignment() {return mAlignment.getValue();}
 
+    void setBackgroundColor(ColorType pBackgroundColor){mBackgroundColor = pBackgroundColor;}
+    ColorType backgroundColor(){return mBackgroundColor;}
+    QString getBackgroundColor() {return mBackgroundColor.toString();}
+
+    void setBackgroundOpacity(OpacityType pBackgroundOpacity){mBackgroundOpacity = pBackgroundOpacity;}
+    OpacityType backgroundOpacity(){return mBackgroundOpacity;}
+    double getBackgroundOpacity() {return mBackgroundOpacity.getValue();}
+
+    void setFlowDirection(StringType pFlowDirection){mFlowDirection = pFlowDirection;}
+    StringType flowDirection(){return mFlowDirection;}
+    std::string getFlowDirection() {return mFlowDirection.getValue();}
+
+    void setTextFlow(StringType pTextFlow){mTextFlow = pTextFlow;}
+    StringType textFlow(){return mTextFlow;}
+    std::string getTextFlow() {return mTextFlow.getValue();}
+
     static const char *CLASS_NAME;
 
 protected :
@@ -71,11 +91,13 @@ private:
     DistanceType mFontSize;
     StringType mValue;
     AlignementType mAlignment;
+    ColorType mBackgroundColor;
+    OpacityType mBackgroundOpacity;
+    StringType mFlowDirection;
+    StringType mTextFlow;
     FT_Library mFtlibrary;
     FT_Face mFtface;
-    StringType mFontLoaded;    
-
-
+    StringType mFontLoaded;
 };
 
 } /* namespace AP2I */

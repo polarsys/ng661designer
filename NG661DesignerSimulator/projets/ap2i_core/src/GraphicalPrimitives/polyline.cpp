@@ -69,8 +69,6 @@ bool Polyline::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -83,8 +81,6 @@ bool Polyline::renderOut(RenderingContext &pContext)
     vgTranslate(-pContext.currentX()-getX(), -pContext.currentY()-getY());
 
     vgDestroyPath(mPolylinePath);
-
-    undoTransformCapacities();
 
     return true;
 }

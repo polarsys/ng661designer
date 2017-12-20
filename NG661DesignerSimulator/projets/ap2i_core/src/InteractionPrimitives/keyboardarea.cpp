@@ -52,8 +52,26 @@ public:
     }
 };
 
-bool KeyboardArea::isEnabled(KeyboardArea &pArea)  { return pArea.enabled();  }
-bool KeyboardArea::isDisabled(KeyboardArea &pArea) { return !pArea.enabled(); }
+bool KeyboardArea::isEnable(KeyboardArea &pArea)  {
+    if (pArea.enable() && pArea.visibility().getValue() == "visible")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool KeyboardArea::isDisabled(KeyboardArea &pArea) {
+    if (!(pArea.enable() && pArea.visibility().getValue() == "visible"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 bool KeyboardArea::isFocusNeeded(KeyboardArea &pArea)  { return pArea.needFocus();  }
 bool KeyboardArea::isFocusNotNeeded(KeyboardArea &pArea) { return !pArea.needFocus(); }
 bool KeyboardArea::isFocused(KeyboardArea &pArea)  { return pArea.focused();   }
@@ -115,7 +133,7 @@ KeyboardArea::KeyboardArea(BasicObject *pParent)
                               lDisabled,
                               lEnabled,
                               NULL,
-                              new KeyboardAreaCondition(*this, isEnabled));
+                              new KeyboardAreaCondition(*this, isEnable));
     lDisabled->addTransition(lEnable);
 
 
@@ -170,9 +188,10 @@ KeyboardArea::KeyboardArea(BasicObject *pParent)
     mStateMachine.start();
 }
 
-void KeyboardArea::handleEvent(RuntimeEvent &pEvent)
+bool KeyboardArea::handleEvent(RuntimeEvent &pEvent)
 {
     mStateMachine.enqueueEvent(pEvent);
+    return true;
 }
 
 const RuntimeEvent *KeyboardArea::getEvent(const QString &pEventName) const
@@ -185,40 +204,7 @@ const RuntimeEvent *KeyboardArea::getEvent(const QString &pEventName) const
 }
 
 bool KeyboardArea::updateIn()
-{
-
-    QMatrix lMatrix;
-    QObject *lCur = this;
-    QStack<QObject *>lAncestors;
-    while(lCur)
-    {
-        lAncestors.push(lCur);
-        lCur = lCur->parent();
-    }
-
-    while(!lAncestors.isEmpty())
-    {
-        lCur = lAncestors.pop();
-        BasicItem *lItem = dynamic_cast<BasicItem *>(lCur);
-        if (lItem)
-        {
-            TransformItem *lTi = dynamic_cast<TransformItem *>(lItem);
-            if (lTi)
-            {
-                int lX, lY;
-                lTi->getOrigin(lX, lY);
-                lMatrix.translate(lTi->x().getValue() + lX, lTi->y().getValue() + lY);
-                lMatrix.scale(lTi->scaleX(), lTi->scaleY());
-                lMatrix.rotate(lTi->angle());
-                lMatrix.translate(-lX, -lY);
-            }
-            else
-            {
-                lMatrix.translate(lItem->x().getValue(), lItem->y().getValue());
-            }
-        }
-    }
-
+{  
     if (this == context().keyboard()->IsFocused())
     {
         mFocused.setValue("true");

@@ -142,15 +142,14 @@ FonctionsDLL::~FonctionsDLL(){
  *          Nouvelle coordonnée en x
  */
 void FonctionsDLL::setXPointer(uint pX){
-    mX = pX;
     if(!mMode){
         mX = pX/mFactor;
-        mPointer.setX(pX/mFactor);
     }else{
         mX = pX / mRW;
-        mPointer.setX(pX / mRW );
     }
+    mPointer.setX(mX);
 }
+
 /**
  * @brief FonctionsDLL::setYPointer
  *              Idem setXPointer
@@ -158,16 +157,13 @@ void FonctionsDLL::setXPointer(uint pX){
  *          Nouvelle coordonnée en y
  */
 void FonctionsDLL::setYPointer(uint pY){
-    mY = mHeight - pY/mFactor;
     if(!mMode){
         mY = mHeight - pY/mFactor;
-        mPointer.setY(mHeight - pY/mFactor);
     }else{
         mY = mHeight - pY / mRH;
-        mPointer.setY(mHeight - pY / mRH);
     }
+    mPointer.setY(mY);
 }
-
 
 /**
  * @brief FonctionsDLL::updateInPointer
