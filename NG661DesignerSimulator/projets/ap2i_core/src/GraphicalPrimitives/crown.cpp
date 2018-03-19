@@ -41,8 +41,6 @@ bool Crown::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -52,9 +50,8 @@ bool Crown::renderOut(RenderingContext &pContext)
 {
     BasicItem::renderOut(pContext);
 
-    vgDestroyPaint(mCrownPath);
+    vgDestroyPath(mCrownPath);
 
-    undoTransformCapacities();
     return true;
 }
 

@@ -22,7 +22,7 @@ class KeyboardArea : public BasicItem
 {
     Q_OBJECT
 
-	Q_PROPERTY(bool enabled READ enabled WRITE setEnabled)
+    Q_PROPERTY(bool enable READ enable WRITE setEnable)
     Q_PROPERTY(bool needFocus READ needFocus WRITE setNeedFocus)
     Q_PROPERTY(bool focused READ focused)
     Q_PROPERTY(KeyEventStructType* data READ data)
@@ -30,8 +30,8 @@ class KeyboardArea : public BasicItem
 public:
     explicit KeyboardArea(BasicObject *pParent = 0);
 
-	bool enabled() { return mEnabled.value(); }
-    void setEnabled(bool pEnabled) { mEnabled = BooleanType(pEnabled); }
+    bool enable() { return mEnable.value(); }
+    void setEnable(bool pEnable) { mEnable = BooleanType(pEnable); }
     bool needFocus() { return mFocusNeeded.value(); }
     void setNeedFocus(bool pNeedFocus) { mFocusNeeded = BooleanType(pNeedFocus); }
 
@@ -42,7 +42,7 @@ public:
     Q_INVOKABLE bool requestFocus();
     Q_INVOKABLE bool releaseFocus();
 
-    void handleEvent(RuntimeEvent &pEvent);
+    bool handleEvent(RuntimeEvent &pEvent);
 
     const RuntimeEvent *getEvent(const QString &pEventName) const;
 
@@ -55,7 +55,7 @@ public:
 
 private:
     // fonctions for transitions conditions
-	static bool isEnabled(KeyboardArea &pArea);
+    static bool isEnable(KeyboardArea &pArea);
     static bool isDisabled(KeyboardArea &pArea);
     static bool isFocusNeeded(KeyboardArea &pArea);
     static bool isFocusNotNeeded(KeyboardArea &pArea);
@@ -68,7 +68,7 @@ private:
     static void raisePressedEvent(KeyboardArea &pArea);
     static void raiseReleasedEvent(KeyboardArea &pArea);
 
-	BooleanType mEnabled;
+    BooleanType mEnable;
     BooleanType mFocusNeeded;    
 
     StateMachine mStateMachine;

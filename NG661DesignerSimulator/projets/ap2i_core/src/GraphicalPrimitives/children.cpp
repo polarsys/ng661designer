@@ -33,8 +33,6 @@ namespace AP2I {
 
         createPrimitive(pContext);
 
-        runTransformCapacities();
-
         drawPrimitive(pContext);
 
         return true;
@@ -43,8 +41,6 @@ namespace AP2I {
     bool Children::renderOut(RenderingContext &pContext)
     {
         BasicItem::renderOut(pContext);
-
-        undoTransformCapacities();
 
         return true;
     }

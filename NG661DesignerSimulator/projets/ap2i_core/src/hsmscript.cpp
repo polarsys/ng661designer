@@ -20,7 +20,7 @@ HSMScript::HSMScript(const QString &pScript, QScriptEngine *pEngine)
     : mScript(pScript),
       mScriptEngine(pEngine)
 {
-    mScript.replace("Representation.", "Representation_", Qt::CaseSensitive);
+    mScript.replace("Tree.", "Tree_", Qt::CaseSensitive);
     mScript.replace("Behavior.", "Behavior_", Qt::CaseSensitive);
     mProgram = QScriptProgram(mScript);
 }

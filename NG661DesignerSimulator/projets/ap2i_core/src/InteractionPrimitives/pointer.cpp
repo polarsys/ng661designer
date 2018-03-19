@@ -9,7 +9,8 @@
 *******************************************************************************/
 
 #include "pointer.h"
-
+#include "basicobject.h"
+#include "runtimecontext.h"
 #include <QDebug>
 
 namespace AP2I
@@ -91,7 +92,26 @@ bool Pointer::updateIn()
         notifyListeners(mReleasedEvent);
 
     if (mX != mPrevX || mY != mPrevY)
+    {
         notifyListeners(mMoveEvent);
+        for (int i = 0; i<mContext.previousFocusedPointerAreas()->size(); i++)
+        {
+            if (mContext.focusedPointerAreas()->contains(mContext.previousFocusedPointerAreas()->at(i)) == false)
+            {
+               mContext.previousFocusedPointerAreas()->at(i)->forceLeave();
+            }
+            else
+            {
+                /* NOTHING TO DO */
+            }
+        }
+        mContext.previousFocusedPointerAreas()->clear();
+        for (int i = 0; i<mContext.focusedPointerAreas()->size(); i++)
+        {
+            mContext.previousFocusedPointerAreas()->append(mContext.focusedPointerAreas()->at(i));
+        }
+        mContext.focusedPointerAreas()->clear();
+    }
 
     if (mPrevButtons < mButtons)
         notifyListeners(mPressedEvent);

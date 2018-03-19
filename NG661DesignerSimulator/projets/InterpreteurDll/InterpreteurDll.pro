@@ -96,15 +96,13 @@ DEPENDPATH += -L$$LIB_EXT_PATH"\freetype-2.3.5-1-bin\lib"
 DEPENDPATH += -L$$LIB_EXT_PATH"\freetype-2.3.5-1-bin\bin"
 PRE_TARGETDEPS += $$LIB_EXT_PATH"\freetype-2.3.5-1-bin\lib\freetype.lib"
 
-LIBS += -L"Z:\Qt\Qt5.3.2\Tools\mingw482_32\lib\gcc\i686-w64-mingw32\lib"
-LIBS += -L"Z:/Qt/Qt5.3.2/Tools/mingw482_32/lib/gcc/i686-w64-mingw32/4.8.2"
-
 PRE_TARGETDEPS += $$GNUWIN32_PATH"/lib/jpeg.lib"
+PRE_TARGETDEPS += $$GNUWIN32_PATH"\lib\libpng.lib"
 DEPENDPATH += $$GNUWIN32_PATH"/lib"
 DEPENDPATH += $$GNUWIN32_PATH"/bin"
 LIBS += -L$$GNUWIN32_PATH"/bin"
 
-LIBS += -lopengl32 -lgdi32 -ljpeg62
+LIBS += -lopengl32 -lgdi32 -ljpeg62 -lpng12
 
 SOURCES += interpreteurdll.cpp\
         src/interpreteurJNIDLL_InterfaceInterpreteur.cpp

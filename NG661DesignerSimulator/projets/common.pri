@@ -10,6 +10,6 @@
 
 CONFIG += c++11 warn_on
 
-JDK_PATH="Z:\a661p2\jdk1.8.0_31"
-GNUWIN32_PATH="Z:\A661p2\dependencies\GnuWin32"
-LIB_EXT_PATH="Z:\A661p2\dependencies\lib-ext"
+JDK_PATH="Z:\jdk1.8.0_31"
+GNUWIN32_PATH="..\..\..\..\A661p2Dependencies\GnuWin32"
+LIB_EXT_PATH="..\..\..\..\A661p2Dependencies\lib-ext"

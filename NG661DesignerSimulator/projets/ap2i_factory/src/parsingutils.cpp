@@ -20,15 +20,32 @@ namespace AP2I
 
 void ParsingUtils::parseItemProperties(Component &pOwner,
                                        BasicObject &pItem,
-                                       QDomElement &pElement)
+                                       QDomElement &pElement,
+                                       QString pReplicateId,
+                                       QString pReplicateIndexAlias,
+                                       QString pReplicateInstanceAlias,
+                                       QString pReplicateDataModel
+                                       )
 {
     QList<QPair<QString, QString> > lBindings;
     QDomNamedNodeMap lAttributes = pElement.attributes();
     for (int i = 0; i < lAttributes.count(); i++)
     {
+        QString lBindingValue = lAttributes.item(i).nodeValue();
+
+        if (pReplicateIndexAlias != "")
+        {
+            lBindingValue.replace(pReplicateIndexAlias, "Tree." + pReplicateId + "index");
+        }
+
+        if (pReplicateInstanceAlias != "")
+        {
+            lBindingValue.replace(pReplicateInstanceAlias, "Interface." + pReplicateDataModel);
+        }
+
         BasicObject::SetPropertyResult lRes =
                 pItem.setPropertyValue(lAttributes.item(i).nodeName(),
-                                           lAttributes.item(i).nodeValue().section(":", -1));
+                                           lBindingValue.section(":", -1));
         switch (lRes)
         {
         case BasicObject::UnknownProperty:
@@ -40,11 +57,12 @@ void ParsingUtils::parseItemProperties(Component &pOwner,
                      << " of object " + pItem.id() + "(" + pItem.className() + ")";
             break;
         case BasicObject::ValueIsABinding:
-            //don't add binding here since it needs to have id property set
+            //don't add binding here since it needs to have id property set            
             lBindings.append(QPair<QString, QString>(
                                  lAttributes.item(i).nodeName(),
-                                 lAttributes.item(i).nodeValue())
+                                 lBindingValue)
                              );
+
             break;
         case BasicObject::CorrectlySet:
         default:
@@ -55,7 +73,7 @@ void ParsingUtils::parseItemProperties(Component &pOwner,
          it != lBindings.end();
          it++)
     {
-        pOwner.addBinding("Representation_" + pItem.id(), (*it).first, (*it).second);
+        pOwner.addBinding("Tree_" + pReplicateId + pItem.id(), (*it).first, (*it).second);
 
     }
 }

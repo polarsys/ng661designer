@@ -72,7 +72,7 @@ bool StateMachineParser::startElement(QDomElement &pElement)
 
         if (lCondStr != "")
         {
-            lCondStr.replace("Representation.", "Representation_", Qt::CaseSensitive);
+            lCondStr.replace("Tree.", "Tree_", Qt::CaseSensitive);
             lCondStr.replace("Behavior.", "Behavior_", Qt::CaseSensitive);
             lCond = new HSMCondition(mScriptEngine, lCondStr);
         }
@@ -181,9 +181,9 @@ const RuntimeEvent *StateMachineParser::parseEvent(const QString &pEventField)
         QString lEventName;
 
         //event expression is of the form :
-        //     {Representation, Behavior}.<item_name>.<event_name>
+        //     {Tree, Behavior}.<item_name>.<event_name>
         QStringList lTokens = pEventField.split(".", QString::SkipEmptyParts);
-        if (lTokens[0] == "Representation")
+        if (lTokens[0] == "Tree")
         {
             lSource = mContext.mRepresentation[lTokens[1]];
             lEventName = lTokens[2];

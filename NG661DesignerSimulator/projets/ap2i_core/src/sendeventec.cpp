@@ -52,7 +52,7 @@ void SendEventEC::setParamExpression(const QString &pParamName,
                                      const QString &pExpr)
 {
     QString lScript(pExpr);
-    lScript.replace("Representation.", "Representation_", Qt::CaseSensitive);
+    lScript.replace("Tree.", "Tree_", Qt::CaseSensitive);
     lScript.replace("Behavior.", "Behavior_", Qt::CaseSensitive);
 
     mParamsExpr.insert(pParamName, QScriptProgram(lScript));

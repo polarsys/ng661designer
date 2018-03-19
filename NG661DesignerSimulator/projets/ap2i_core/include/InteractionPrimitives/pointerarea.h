@@ -23,7 +23,7 @@ class PointerArea : public BasicItem
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool enabled READ enabled WRITE setEnabled)
+    Q_PROPERTY(bool enable READ enable WRITE setEnable)
     Q_PROPERTY(bool focused READ focused)
     Q_PROPERTY(bool preventStealing READ preventStealing WRITE setPreventStealing)
     Q_PROPERTY(bool passThrough READ passThrough WRITE setPassThrough)
@@ -35,12 +35,12 @@ public:
 
     virtual ~PointerArea() {}
 
-    bool enabled() { return mEnabled.value(); }
-    void setEnabled(bool pEnabled) { mEnabled = BooleanType(pEnabled); }
+    bool enable() { return mEnable.value(); }
+    void setEnable(bool pEnable) { mEnable = BooleanType(pEnable); }
 
     bool focused() const {return mFocused; }
 
-    void handleEvent(RuntimeEvent &pEvent);
+    bool handleEvent(RuntimeEvent &pEvent);
 
 
     bool preventStealing() { return mPreventStealing.value(); }
@@ -59,6 +59,8 @@ public:
 
     bool updateIn();
 
+    void forceLeave();
+
     static const char *CLASS_NAME;
 
     typedef bool (*T_PACondition)(PointerArea &);
@@ -66,7 +68,7 @@ public:
 
 private:
     // fonctions for transitions conditions
-    static bool isEnabled(PointerArea &pArea);
+    static bool isEnable(PointerArea &pArea);
     static bool isDisabled(PointerArea &pArea);
     static bool isFocused(PointerArea &pArea);
     static bool isUnfocused(PointerArea &pArea);
@@ -79,7 +81,9 @@ private:
     static void raisePressEvent(PointerArea &pArea);
     static void raiseReleaseEvent(PointerArea &pArea);
 
-    BooleanType mEnabled;
+    void computeFocus();
+
+    BooleanType mEnable;
 
     StateMachine mStateMachine;
     RuntimeEvent mEnterEvent;

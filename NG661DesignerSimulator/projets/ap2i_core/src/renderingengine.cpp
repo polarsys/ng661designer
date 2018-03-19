@@ -28,7 +28,7 @@ bool RenderingEngine::in(BasicObject *pObject)
     BasicItem *lItem = dynamic_cast<BasicItem *>(pObject);
     if (lItem)
     {
-        if (lItem->visible())
+        if (lItem->visibility().getValue().compare("visible") == 0)
         {
             mContexts.push(mContexts.top());
             return lItem->renderIn(mContexts.top());
@@ -40,15 +40,21 @@ bool RenderingEngine::in(BasicObject *pObject)
     }
     else
     {
-        // not a graphic object
-        return pObject->visible();
+        if (pObject->visibility().getValue().compare("visible") == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 
 bool RenderingEngine::out(BasicObject *pObject)
 {
     BasicItem *lItem = dynamic_cast<BasicItem *>(pObject);
-    if (lItem && lItem->visible())
+    if (lItem && (lItem->visibility().getValue().compare("visible") == 0))
     {
         bool lRes = lItem->renderOut(mContexts.top());
         mContexts.pop();

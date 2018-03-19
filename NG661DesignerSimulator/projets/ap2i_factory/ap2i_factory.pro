@@ -44,6 +44,7 @@ INCLUDEPATH += ../ap2i_hsm/include
 INCLUDEPATH += ../ap2i_core/include
 INCLUDEPATH += ../ap2i_core/include/GraphicalPrimitives
 INCLUDEPATH += ../ap2i_core/include/InteractionPrimitives
+INCLUDEPATH += ../ap2i_core/include/TransformPrimitives
 INCLUDEPATH += ../ap2i_core/include/types
 
 INCLUDEPATH += $$JDK_PATH"\include"
@@ -77,7 +78,7 @@ HEADERS += \
     include/statemachineparser.h \
     include/complextypeparser.h \
     include/fonctionsdll.h \
-   # include/interpreteurJNIDLL_InterfaceInterpreteur.h
+    include/arraypropertyparser.h
 
 SOURCES += \
     src/behaviorparser.cpp \
@@ -93,7 +94,7 @@ SOURCES += \
     src/statemachineparser.cpp \
     src/complextypeparser.cpp \
     src/fonctionsdll.cpp \
-    #src/interpreteurJNIDLL_InterfaceInterpreteur.cpp
+    src/arraypropertyparser.cpp
 
 
 

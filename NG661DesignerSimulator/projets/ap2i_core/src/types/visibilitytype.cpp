@@ -94,10 +94,10 @@ QScriptValue VisibilityType::toScriptValue(QScriptEngine *,
 
 // used by QScriptEngine to convert a generic QScriptValue to an ColorType
 // it allows to set color properties in scripts by giving another color property :
-//      Representation.rect1.fillColor = Representation.rect2.fillColor
+//      Tree.rect1.fillColor = Tree.rect2.fillColor
 // or to set the color directly by giving the its name :
-//      Representation.rect1.fillColor = "red";
-//      Representation.rect1.fillColor = "#FFFF0000";
+//      Tree.rect1.fillColor = "red";
+//      Tree.rect1.fillColor = "#FFFF0000";
 void VisibilityType::fromScriptValue(const QScriptValue &pValue,
                                   VisibilityType &pVisibility)
 {

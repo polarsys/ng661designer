@@ -52,8 +52,26 @@ public:
     }
 };
 
-bool ScrollWheelArea::isEnabled(ScrollWheelArea &pArea)  { return pArea.enabled();  }
-bool ScrollWheelArea::isDisabled(ScrollWheelArea &pArea) { return !pArea.enabled(); }
+bool ScrollWheelArea::isEnabled(ScrollWheelArea &pArea)  {
+    if (pArea.enable() && pArea.visibility().getValue() == "visible")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool ScrollWheelArea::isDisabled(ScrollWheelArea &pArea) {
+    if (!(pArea.enable() && pArea.visibility().getValue() == "visible"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 bool ScrollWheelArea::isFocusNeeded(ScrollWheelArea &pArea)  { return pArea.needFocus();  }
 bool ScrollWheelArea::isFocusNotNeeded(ScrollWheelArea &pArea) { return !pArea.needFocus(); }
 bool ScrollWheelArea::isFocused(ScrollWheelArea &pArea)  { return pArea.focused();   }
@@ -148,9 +166,10 @@ ScrollWheelArea::ScrollWheelArea(BasicObject *pParent)
 	mStateMachine.start();
 }
 
-void ScrollWheelArea::handleEvent(RuntimeEvent &pEvent)
+bool ScrollWheelArea::handleEvent(RuntimeEvent &pEvent)
 {
     mStateMachine.enqueueEvent(pEvent);
+    return true;
 }
 
 const RuntimeEvent *ScrollWheelArea::getEvent(const QString &pEventName) const
@@ -163,39 +182,6 @@ const RuntimeEvent *ScrollWheelArea::getEvent(const QString &pEventName) const
 
 bool ScrollWheelArea::updateIn()
 {
-
-    QMatrix lMatrix;
-    QObject *lCur = this;
-    QStack<QObject *>lAncestors;
-    while(lCur)
-    {
-        lAncestors.push(lCur);
-        lCur = lCur->parent();
-    }
-
-    while(!lAncestors.isEmpty())
-    {
-        lCur = lAncestors.pop();
-        BasicItem *lItem = dynamic_cast<BasicItem *>(lCur);
-        if (lItem)
-        {
-            TransformItem *lTi = dynamic_cast<TransformItem *>(lItem);
-            if (lTi)
-            {
-                int lX, lY;
-                lTi->getOrigin(lX, lY);
-                lMatrix.translate(lTi->x().getValue() + lX, lTi->y().getValue() + lY);
-                lMatrix.scale(lTi->scaleX(), lTi->scaleY());
-                lMatrix.rotate(lTi->angle());
-                lMatrix.translate(-lX, -lY);
-            }
-            else
-            {
-                lMatrix.translate(lItem->x().getValue(), lItem->y().getValue());
-            }
-        }
-    }
-
     if (this == context().scrollwheel()->IsFocused())
     {
         mFocused.setValue("true");

@@ -61,7 +61,7 @@ void PropertyParser::digest(QDomElement &pElement)
     if (mContext.mTypes.contains(lValueType))
     {
         if (lValueStr.indexOf("Interface.")      == -1
-         && lValueStr.indexOf("Representation.") == -1
+         && lValueStr.indexOf("Tree.") == -1
          && lValueStr.indexOf("Behavior.")       == -1)
         {
             int lType = mContext.mTypes[lValueType];

@@ -41,8 +41,6 @@ bool Arc::renderIn(RenderingContext &pContext)
 
     createPrimitive(pContext);
 
-    runTransformCapacities();
-
     drawPrimitive(pContext);
 
     return true;
@@ -53,8 +51,6 @@ bool Arc::renderOut(RenderingContext &pContext)
     BasicItem::renderOut(pContext);
 
     vgDestroyPath(mArcPath);
-
-    undoTransformCapacities();
 
     return true;
 }

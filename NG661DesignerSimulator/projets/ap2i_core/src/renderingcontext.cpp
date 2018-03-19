@@ -22,26 +22,8 @@ namespace AP2I
 RenderingContext::RenderingContext(/*QPaintDevice *pDevice*/)
     : mCurrentX(0),
       mCurrentY(0),
-      mCurrentOpacity(1.0),
-      mCurrentClipbox(),
-      mCurrentMatrix()
-//      mDevice(pDevice),
-//      mTextures(new TexturesMap())
+      mCurrentOpacity(1.0)
 {
-}
-
-void RenderingContext::cumulateClipbox(int pX, int pY, int pWidth, int pHeight)
-{
-    if (mCurrentClipbox.isNull())
-    {
-        mCurrentClipbox = QRect(pX, pY, pWidth, pHeight);
-    }
-    else
-    {
-        //        mCurrentClipbox = mCurrentClipbox.intersected(QRect(pX, pY, pWidth, pHeight));
-        QRect lIntersectedRect = mCurrentClipbox.intersected(QRect(pX, pY, pWidth, pHeight));
-        mCurrentClipbox = mCurrentClipbox.united( lIntersectedRect);
-    }
 }
 
 uint RenderingContext::loadTexture(const QImage &)

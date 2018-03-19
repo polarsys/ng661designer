@@ -16,6 +16,7 @@
 #include <QList>
 #include <QMetaType>
 #include <QVariant>
+#include "visibilitytype.h"
 #include "CapacitiesMacros.h"
 
 namespace AP2I
@@ -28,10 +29,10 @@ class BasicObject : public QObject
 {
     Q_OBJECT
     CORE_PROPERTIES
+    GRAPHICS_PROPERTIES
 
     Q_PROPERTY(QString className READ className WRITE setClassName)
     Q_PROPERTY(QString type READ type WRITE setType)
-    Q_PROPERTY(bool visible READ visible WRITE setVisible)
 
 public:
 
@@ -63,8 +64,7 @@ public:
     QString type() const { return mType; }
     void setType(QString pType) { mType = pType; }
 
-    bool visible() { return mVisible; }
-    void setVisible(bool pVisible) { mVisible = pVisible; }
+    GRAPHICS_METHODS
 
     BasicObject *defaultContent() { return mDefaultContent; }
     void setDefaultContent(BasicObject *pContent);
@@ -84,7 +84,7 @@ public:
 
     // called for all BasicObject registered as Listeners of this object
     // throught addEventsListener
-    virtual void handleEvent(RuntimeEvent &/*pEvent*/) {}
+    virtual bool handleEvent(RuntimeEvent &/*pEvent*/) {return true;}
 
     Q_INVOKABLE SetPropertyResult setPropertyValue(const QString &pPropName,
                                                    const QString &pPropValue);
@@ -104,13 +104,13 @@ public:
 
 protected:
     CORE_FIELDS
+    GRAPHICS_FIELDS
 
     void notifyListeners(RuntimeEvent &pEvent);
 
     // Get a Children object which is child of the current object
     BasicObject *getChildrenObjectOf(const QString &pOriginComponentName);
 
-    bool mVisible;
     QString mClassName;
     QString mType;
     BasicObject *mDefaultContent;

@@ -175,14 +175,18 @@ QScriptValue ColorType::toScriptValue(QScriptEngine *,
 
 // used by QScriptEngine to convert a generic QScriptValue to an ColorType
 // it allows to set color properties in scripts by giving another color property :
-//      Representation.rect1.fillColor = Representation.rect2.fillColor
+//      Tree.rect1.fillColor = Tree.rect2.fillColor
 // or to set the color directly by giving the its name :
-//      Representation.rect1.fillColor = "red";
-//      Representation.rect1.fillColor = "#FF0000";
-//      Representation.rect1.fillColor = "#FFFF0000";
+//      Tree.rect1.fillColor = "red";
+//      Tree.rect1.fillColor = "#FF0000";
+//      Tree.rect1.fillColor = "#FFFF0000";
 void ColorType::fromScriptValue(const QScriptValue &pValue,
                                   ColorType &pColor)
 {
+    if(pColor.blue()!=0)
+    {
+        qDebug()<<pColor.toString();
+    }
     if (pValue.isString())
     {
         pColor.setBySVGName(pValue.toString());
@@ -222,11 +226,19 @@ QString ColorType::toString() const
     QString lAlpha, lRed, lBlue, lGreen;
 
     lAlpha.setNum(mAlpha, 16);
+    if(lAlpha.length() == 1)
+        lAlpha.prepend("0");
     lRed.setNum(mRed, 16);
+    if(lRed.length() == 1)
+        lRed.prepend("0");
     lBlue.setNum(mBlue, 16);
+    if(lBlue.length() == 1)
+        lBlue.prepend("0");
     lGreen.setNum(mGreen, 16);
+    if(lGreen.length() == 1)
+        lGreen.prepend("0");
 
-    lReturn = "#" + lAlpha.toUpper() + lRed.toUpper() + lBlue.toUpper() + lGreen.toUpper();
+    lReturn = "#" + lAlpha.toUpper() + lRed.toUpper() + lGreen.toUpper() + lBlue.toUpper();
 
     return lReturn;
 }

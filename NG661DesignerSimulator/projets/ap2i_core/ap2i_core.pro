@@ -37,13 +37,14 @@ CONFIG(debug, debug|release){
 
 QT += opengl xml script gui
 
-INCLUDEPATH += "./include"
-INCLUDEPATH += "./include/types"
-INCLUDEPATH += "./include/GraphicalPrimitives"
-INCLUDEPATH += "./include/InteractionPrimitives"
-INCLUDEPATH += ../ap2i_xml/include
-INCLUDEPATH += ../ap2i_hsm/include
-INCLUDEPATH += ../ap2i_core/include
+INCLUDEPATH += "include"
+INCLUDEPATH += "include/types"
+INCLUDEPATH += "include/GraphicalPrimitives"
+INCLUDEPATH += "include/InteractionPrimitives"
+INCLUDEPATH += "include/TransformPrimitives"
+INCLUDEPATH += "../ap2i_xml/include"
+INCLUDEPATH += "../ap2i_hsm/include"
+INCLUDEPATH += "../ap2i_core/include"
 
 INCLUDEPATH += $$JDK_PATH"\include"
 INCLUDEPATH += $$JDK_PATH"\include\win32"
@@ -67,25 +68,50 @@ unix {
     INSTALLS += target
 }
 
-
 HEADERS += \
+    include/ap2i_core.h \
+    include/basicitem.h \
+    include/basicobject.h \
+    include/binding.h \
+    include/clippathitem.h \
+    include/clippingitem.h \
+    include/clock.h \
+    include/component.h \
+    include/engine.h \
+    include/eventcomponent.h \
+    include/executeengine.h \
     include/GraphicalPrimitives/arc.h \
+    include/GraphicalPrimitives/children.h \
     include/GraphicalPrimitives/circle.h \
+    include/GraphicalPrimitives/cliprectangle.h \
     include/GraphicalPrimitives/crown.h \
     include/GraphicalPrimitives/ellipse.h \
+    include/GraphicalPrimitives/group.h \
     include/GraphicalPrimitives/image.h \
     include/GraphicalPrimitives/line.h \
+    include/GraphicalPrimitives/polarline.h \
     include/GraphicalPrimitives/polygon.h \
     include/GraphicalPrimitives/polyline.h \
     include/GraphicalPrimitives/rectangle.h \
-    include/GraphicalPrimitives/group.h \
     include/GraphicalPrimitives/text.h \
-    include/GraphicalPrimitives/children.h \
-    include/GraphicalPrimitives/polarline.h \
+    include/hsmcondition.h \
+    include/hsmscript.h \
+    include/InteractionPrimitives/keyboard.h \
+    include/InteractionPrimitives/pointer.h \
     include/InteractionPrimitives/pointerarea.h \
+    include/InteractionPrimitives/scrollwheel.h \
+    include/InteractionPrimitives/keyboardarea.h \
+    include/InteractionPrimitives/scrollwheelarea.h \
+    include/renderingcontext.h \
+    include/renderingengine.h \
+    include/runtimecontext.h \
+    include/runtimeevent.h \
+    include/sendeventec.h \
+    include/TransformPrimitives/transformitem.h \
     include/types/a661p2color.h \
     include/types/alignementtype.h \
     include/types/angletype.h \
+    include/types/aspectratiotype.h \
     include/types/booleantype.h \
     include/types/colortype.h \
     include/types/datetype.h \
@@ -98,7 +124,9 @@ HEADERS += \
     include/types/idtype.h \
     include/types/imagetype.h \
     include/types/integertype.h \
-    include/types/opacityType.h \
+    include/types/keyeventstructtype.h \
+    include/types/nametype.h \
+    include/types/opacitytype.h \
     include/types/paintstrokecapacities.h \
     include/types/positiontype.h \
     include/types/stippletype.h \
@@ -107,39 +135,19 @@ HEADERS += \
     include/types/transformcapacities.h \
     include/types/typetype.h \
     include/types/velocitytype.h \
-    include/ap2i_core.h \
-    include/basicitem.h \
-    include/basicobject.h \
-    include/binding.h \
-    include/CapacitiesMacros.h \
-    include/clock.h \
-    include/component.h \
-    include/debug_macros.h \
-    include/engine.h \
-    include/executeengine.h \
-    include/hsmcondition.h \
-    include/hsmscript.h \
-    include/InteractionPrimitives/pointer.h \
-    include/renderingcontext.h \
-    include/renderingengine.h \
-    include/runtimecontext.h \
-    include/runtimeevent.h \
-    include/sendeventec.h \
-    include/transformitem.h \
-    include/InteractionPrimitives/keyboard.h \
-    include/InteractionPrimitives/keyboardarea.h \
-    include/types/nametype.h \
-    include/types/aspectratiotype.h \
     include/types/visibilitytype.h \
+    include/types/wheeleventstructtype.h \
     include/types/zindextype.h \
-    include/eventcomponent.h \
-    include/clippingitem.h \
-    include/clippathitem.h \
-    include/GraphicalPrimitives/cliprectangle.h \
-    include/types/keyeventstructtype.h \
-    include/InteractionPrimitives/scrollwheel.h \
-    include/InteractionPrimitives/scrollwheelarea.h \
-    include/types/wheeleventstructtype.h
+    include/TransformPrimitives/transformtranslate.h \
+    include/TransformPrimitives/transformrotate.h \
+    include/TransformPrimitives/transformscale.h \
+    include/TransformPrimitives/transformskew.h \
+    include/TransformPrimitives/transformmatrix.h \
+    include/GraphicalPrimitives/switchnode.h \
+    include/types/entrytype.h \
+    include/types/arrayentrytype.h \
+    include/GraphicalPrimitives/replicate.h \
+	include/GraphicalPrimitives/replicateentry.h
 
 
 SOURCES += \
@@ -180,7 +188,6 @@ SOURCES += \
     src/types/transformcapacities.cpp \
     src/types/typetype.cpp \
     src/types/velocitytype.cpp \
-    src/a661p2color.cpp \
     src/ap2i_core.cpp \
     src/basicitem.cpp \
     src/basicobject.cpp \
@@ -189,6 +196,7 @@ SOURCES += \
     src/component.cpp \
     src/engine.cpp \
     src/executeengine.cpp \
+    src/InteractionPrimitives/scrollwheelarea.cpp \
     src/hsmcondition.cpp \
     src/hsmscript.cpp \
     src/renderingcontext.cpp \
@@ -204,18 +212,20 @@ SOURCES += \
     src/types/visibilitytype.cpp \
     src/types/zindextype.cpp \
     src/eventcomponent.cpp \
-    src/transformitem.cpp \
+    src/TransformPrimitives/transformitem.cpp \
     src/clippingitem.cpp \
     src/clippathitem.cpp \
     src/GraphicalPrimitives/cliprectangle.cpp \
     src/types/keyeventstructtype.cpp \
     src/InteractionPrimitives/scrollwheel.cpp \
-    src/InteractionPrimitives/scrollwheelarea.cpp \
-    src/types/wheeleventstructtype.cpp
-
-
-
-
-
-
-
+    src/types/wheeleventstructtype.cpp \
+    src/TransformPrimitives/transformtranslate.cpp \
+    src/TransformPrimitives/transformrotate.cpp \
+    src/TransformPrimitives/transformscale.cpp \
+    src/TransformPrimitives/transformskew.cpp \
+    src/TransformPrimitives/transformmatrix.cpp \
+    src/GraphicalPrimitives/switchnode.cpp \
+    src/types/entrytype.cpp \
+    src/types/arrayentrytype.cpp \
+    src/GraphicalPrimitives/replicate.cpp \
+    src/GraphicalPrimitives/replicateentry.cpp

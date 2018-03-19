@@ -68,7 +68,7 @@ bool BehaviorParser::startElement(QDomElement &pElement)
     {
         lNewObject->setOwner(&mContext.mComponent);
         lNewObject->setOriginComponent(&mContext.mComponent);
-        ParsingUtils::parseItemProperties(mContext.mComponent, *lNewObject, pElement);
+        ParsingUtils::parseItemProperties(mContext.mComponent, *lNewObject, pElement, "", "", "", "");
         mContext.mComponent.registerBehaviorElement(lNewObject);
         mContext.mBehavior.insert(lNewObject->id(), lNewObject);
         mParents.push(QPair<BasicObject *, QDomElement>(lNewObject, pElement));

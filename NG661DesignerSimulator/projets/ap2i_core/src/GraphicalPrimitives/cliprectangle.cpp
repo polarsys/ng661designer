@@ -41,23 +41,6 @@ bool ClipRectangle::renderOut()
 void ClipRectangle::createPrimitive(RenderingContext &pContext)
 {
     BasicItem::renderIn(pContext);
-//    VGint lCoordnumber = vgGetVectorSize(VG_SCISSOR_RECTS);
-//    if (lCoordnumber < 4)
-//    {
-//        VGint singlecoords[4] = {pContext.currentX()+getX(),  pContext.currentY()+getY(),  getWidth(),  getHeight()};
-//        vgSetiv(VG_SCISSOR_RECTS, 4, singlecoords);
-//    }
-//    else
-//    {
-//        VGint coords[lCoordnumber + 4];
-//        vgGetiv(VG_SCISSOR_RECTS, lCoordnumber, coords);
-//        coords[lCoordnumber] = pContext.currentX()+getX();
-//        coords[lCoordnumber + 1] = pContext.currentY()+getY();
-//        coords[lCoordnumber + 2] = getWidth();
-//        coords[lCoordnumber + 3] = getHeight();
-//        vgSetiv(VG_SCISSOR_RECTS, lCoordnumber + 4, coords);
-//    }
-
     glScissor(pContext.currentX()+getX(), pContext.currentY()+getY(), getWidth(), getHeight());
 
     return;

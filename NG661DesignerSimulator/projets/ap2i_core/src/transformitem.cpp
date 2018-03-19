@@ -54,18 +54,8 @@ bool TransformItem::renderIn(RenderingContext &pContext)
     if ( mScaleX != 1.0f || mScaleY != 1.0f || mAngle != 0.0f)
     {
         int lX, lY;
-        QMatrix &lMatrix = pContext.currentMatrix();
 
         getOrigin(lX, lY);
-        lMatrix.translate(pContext.currentX() + lX + getX(), pContext.currentY() + lY + getY());
-        lMatrix.scale(mScaleX, mScaleY);
-        lMatrix.rotate(mAngle);
-        lMatrix.translate(-lX, -lY);
-
-        vgTranslate(pContext.currentX() + lX + getX(), pContext.currentY() + lY + getY());
-        vgScale(mScaleX, mScaleY);
-        vgRotate(mAngle);
-        vgTranslate(-lX, -lY);
 
         glPushMatrix();
         glTranslatef(pContext.currentX() + lX + getX(), pContext.currentY() + lY + getY(), 0.0F);
@@ -93,16 +83,7 @@ bool TransformItem::renderOut(RenderingContext &pContext)
 
     if ( mScaleX != 1.0f || mScaleY != 1.0f || mAngle != 0.0f)
     {
-        int lX, lY;
-
         glPopMatrix();
-
-        getOrigin(lX, lY);
-
-        vgTranslate(lX, lY);
-        vgRotate(-mAngle);
-        vgScale(-mScaleX, -mScaleY);
-        vgTranslate(-(pContext.currentX() + lX + getX()), -(pContext.currentY() + lY + getY()));
 
     }
     else
